@@ -54,6 +54,9 @@ def need_building(buildings, left_x, spacings, screen_width):
         return True
     return False
 
+
+
+
 def main():
     screen_width = 1280
     screen_height = 720
@@ -71,12 +74,13 @@ def main():
     right_spacings = []
     buildings.append(gen_building(50, 100, 200, 400))
     right_spacings.append(random.randint(0, 50))
+    player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+    dt = 0
     while running:
         screen.fill("white")
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running= False
-        clock.tick(60)
         if need_building(buildings, left_x, right_spacings, screen_width):
             buildings.append(gen_building(50, 100, 200, 400))
             right_spacings.append(random.randint(0, 50))
@@ -92,8 +96,28 @@ def main():
             screen.blit(building, (left_x + spacing + widths, screen_height - building.get_height()))
             widths += building.get_width()
             spacing += right_spacings[index]
+
+        #draw charachter
+        pygame.draw.circle(screen, "red", player_pos, 40)
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w]:
+            player_pos.y -= 300 * dt
+        if keys[pygame.K_s]:
+            player_pos.y += 300 * dt
+        if keys[pygame.K_a]:
+            player_pos.x -= 300 * dt
+        if keys[pygame.K_d]:
+            player_pos.x += 300 * dt
+        
+        player_pos.y += 300*dt
+
+        if player_pos.y + 20 > screen_height:
+            player_pos.y = screen_height-20
+        
         pygame.display.flip()
-        clock.tick(120)
+        dt = clock.tick(60) / 1000
+
 
     pygame.quit()
     quit()
