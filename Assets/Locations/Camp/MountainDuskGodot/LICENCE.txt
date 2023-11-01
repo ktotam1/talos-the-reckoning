@@ -1,0 +1,5 @@
+FROM https://ansimuz.itch.io/mountain-dusk-parallax-background
+
+You may use these assets in personal or commercial projects. You may modify these assets to suit your needs. 
+
+Credit is not required but appreciated it
