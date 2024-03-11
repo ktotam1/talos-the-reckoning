@@ -57,7 +57,7 @@ func __get_load_game_item(save_metadata:SaveInfoItem)->HBoxContainer:
 	return ret
 
 func _create_new_game():
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")
 	
 func _load_and_start_game(save_path:String):
 	pass
