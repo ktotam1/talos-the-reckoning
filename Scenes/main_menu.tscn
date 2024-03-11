@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5fbkxo0cmalu"]
+
+[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_3sa7a"]
+[ext_resource type="Texture2D" uid="uid://qwuba3cso7ww" path="res://Textures/UI/ms_logo.png" id="2_pnta3"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3sa7a")
+
+[node name="Menu Options" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -74.0
+offset_right = 57.0
+grow_vertical = 0
+
+[node name="Load" type="Button" parent="Menu Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Load"
+
+[node name="Settings" type="Button" parent="Menu Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Menu Options"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 16.0
+offset_right = 83.0
+offset_bottom = 77.0
+texture = ExtResource("2_pnta3")
+
+[node name="Selected Option" type="Container" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 39.0
+offset_right = 265.0
+offset_bottom = 151.0
+
+[connection signal="pressed" from="Menu Options/Quit" to="." method="_on_quit_pressed"]
