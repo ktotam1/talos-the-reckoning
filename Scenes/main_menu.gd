@@ -1,10 +1,66 @@
 extends Control
 
+var all_saves = SaveMetadata.new();
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	# Hide all submenus
+	$"All Saves".visible = false;
+	
+	# Load saves
+	__load_saves();
+	
+	
+func __load_saves():
+	var dir = DirAccess.open(Globals.SAVES_FULL_DIR);
+	if dir:
+		all_saves = ResourceLoader.load(Globals.SAVES_FULL_DIR+Globals.SAVES_METADATA_FULL_NAME);
+	else : 
+		DirAccess.make_dir_absolute(Globals.SAVES_FULL_DIR);
+		ResourceSaver.save(all_saves,Globals.SAVES_FULL_DIR+Globals.SAVES_METADATA_FULL_NAME);	
+	# all_saves.all_games_metadata is assumed to be sorted in descending order by last accessed
+	# That is, its first item is the game played the furthest in time
+	# Since adding children (`add_child`) adds items at the bottom, we can simply add them linearly 	
+	for save_metadata in all_saves.all_games_metadata:
+		save_metadata = save_metadata as SaveInfoItem
+		$"All Saves".add_child(__get_load_game_item(save_metadata))
+		
+	#Finally, add the "Create new game" element
+	$"All Saves".add_child(__get_create_new_game_element())
 
+func __get_create_new_game_element()->Button:
+	var btn = Button.new()
+	btn.text = "+ New Game"
+	btn.pressed.connect(self._create_new_game)
+	return btn
+
+func __get_load_game_item(save_metadata:SaveInfoItem)->HBoxContainer:
+	var ret = HBoxContainer.new()
+	ret.pressed.connect(self._load_and_start_game.bind(Globals.SAVES_FULL_DIR+"/"+save_metadata.save_name))
+	# TODO: add image
+	var save_name_beautified = save_metadata.save_name.capitalize()
+	var date_string = Time.get_datetime_string_from_unix_time(save_metadata.last_accessed,true)
+	
+	var vbox = VBoxContainer.new()
+	var name_label = Label.new()
+	var date_label = Label.new()
+	
+	name_label.text = save_name_beautified
+	date_label.text = date_string
+	
+	vbox.add_child(name_label)
+	vbox.add_spacer(false)
+	vbox.add_child(date_label)
+	
+	ret.add_child(vbox)
+	
+	return ret
+
+func _create_new_game():
+	get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")
+	
+func _load_and_start_game(save_path:String):
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -13,3 +69,8 @@ func _process(delta):
 
 func _on_quit_pressed():
 	get_tree().quit(0)
+
+
+func _on_load_pressed():
+	$"All Saves".visible = true;
+	

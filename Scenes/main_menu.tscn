@@ -45,11 +45,12 @@ offset_right = 83.0
 offset_bottom = 77.0
 texture = ExtResource("2_pnta3")
 
-[node name="Selected Option" type="Container" parent="."]
+[node name="All Saves" type="ScrollContainer" parent="."]
 layout_mode = 0
-offset_left = 125.0
-offset_top = 39.0
-offset_right = 265.0
-offset_bottom = 151.0
+offset_left = 108.0
+offset_top = 41.0
+offset_right = 264.0
+offset_bottom = 143.0
 
+[connection signal="pressed" from="Menu Options/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Menu Options/Quit" to="." method="_on_quit_pressed"]
