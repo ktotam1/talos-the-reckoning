@@ -37,9 +37,10 @@ script = ExtResource("2_mebbf")
 wait_time = 300.0
 autostart = true
 
-[node name="Pause Menu" parent="." instance=ExtResource("1_lxrky")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("1_lxrky")]
 process_mode = 2
-layout_mode = 1
 
 [connection signal="timeout" from="Gui/Timer" to="." method="save_game"]
-[connection signal="save_button_pressed" from="Pause Menu" to="." method="_on_pause_menu_save_button_pressed"]
+[connection signal="save_button_pressed" from="CanvasLayer/Pause Menu" to="." method="_on_pause_menu_save_button_pressed"]

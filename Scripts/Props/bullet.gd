@@ -7,7 +7,7 @@ var destroyed : bool = false
 
 #Refrences
 @onready var sprite : Sprite2D = $Sprite2D
-@onready var particle : GPUParticles2D = $GPUParticles2D
+#@onready var particle : GPUParticles2D = $GPUParticles2D
 @onready var collsion_timer : Timer = $CollisionTimer
 @onready var no_collision_timer : Timer = $NoCollisionTimer
 @onready var hitbox : Area2D = $Hitbox

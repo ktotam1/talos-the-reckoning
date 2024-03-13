@@ -22,7 +22,7 @@ var game_paused : bool = false:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.game_manager_singleton = self
-	toggle_game_paused.connect($"Pause Menu".game_manager_requested_pause)
+	toggle_game_paused.connect($"CanvasLayer/Pause Menu".game_manager_requested_pause)
 	set_current_level(FIRST_LEVEL)
 	
 
