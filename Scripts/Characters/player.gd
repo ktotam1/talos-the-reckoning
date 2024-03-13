@@ -54,21 +54,10 @@ func animate(input_vector):
 			animator.play("idle")
 	else:
 		if velocity.y > 0:
-			animator.play("Fall")
+			animator.play("fall")
 		else:
-			animator.play("Jump")
-func player_animations():
-	#on left (add is_action_just_released so you continue running after jumping)
-	if Input.is_action_pressed("ui_left"):
-		$AnimatedSprite2D.flip_h = true
-		$AnimatedSprite2D.play("walking")
-	
-	#on right (add is_action_just_released so you continue running after jumping)
-	if Input.is_action_pressed("ui_right"):
-		$AnimatedSprite2D.flip_h = false
-		$AnimatedSprite2D.play("walking")
-	if !Input.is_anything_pressed():
-		$AnimatedSprite2D.play("idle")
+			animator.play("jump")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	velocity.y += gravity * delta

@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cy7q26vdtq8g"]
+[gd_scene load_steps=15 format=3 uid="uid://cy7q26vdtq8g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_1hh4u"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="1_a1tvw"]
 [ext_resource type="Texture2D" uid="uid://b1e2tlpkhwg4q" path="res://Assets/Props/gun.png" id="3_htdb8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmqrt"]
+atlas = ExtResource("1_a1tvw")
+region = Rect2(22, 163, 16, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5md4"]
 atlas = ExtResource("1_a1tvw")
@@ -38,6 +42,14 @@ region = Rect2(21, 130, 17, 30)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7qdfr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmqrt")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p5md4")
@@ -86,7 +98,7 @@ script = ExtResource("1_1hh4u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7qdfr")
-animation = &"walking"
+animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, 0.5)
@@ -104,3 +116,4 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("3_htdb8")
 
 [node name="PistolBulletMarker" type="Marker2D" parent="Hand/Pivot/Pistol"]
+position = Vector2(500, -200)

@@ -33,8 +33,19 @@ func _on_collision_timer_timeout():
 func _on_no_collision_timer_timeout():
 	die()
 
-func _on_body_entered(_body):
-	die()
-	if not destroyed:
+
+
+#func _on_area_entered(area):
+	#push_error("DIE!!!")
+	#$die()
+	#if not destroyed:
 		#AudioManager.play_sound(AudioManager.BULLET)
-		destroyed = true
+	#	destroyed = true # Replace with function body.
+
+
+func _on_body_entered(body):
+	if body.name != "Player":
+		die()
+		if not destroyed:
+			#AudioManager.play_sound(AudioManager.BULLET)
+			destroyed = true # Replace with function body.
