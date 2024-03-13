@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1kogi6wg1y0l"]
+
+[ext_resource type="Script" path="res://Scripts/Globals/GameManager.gd" id="1_0dsy1"]
+[ext_resource type="PackedScene" uid="uid://x2tduvu3nsg7" path="res://Scenes/UI/pause_menu.tscn" id="1_lxrky"]
+[ext_resource type="Script" path="res://Scripts/Globals/Current Level.gd" id="2_mebbf"]
+
+[node name="Game Manager" type="Control" groups=["GAME_MANAGER_DO_NOT_ADD"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dsy1")
+FIRST_LEVEL = "res://Scenes/Levels/level_1.tscn"
+
+[node name="Gui" type="Control" parent="."]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Current Level" type="Container" parent="Gui" groups=["saveable_objects"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mebbf")
+
+[node name="Timer" type="Timer" parent="Gui"]
+wait_time = 300.0
+autostart = true
+
+[node name="Pause Menu" parent="." instance=ExtResource("1_lxrky")]
+process_mode = 2
+layout_mode = 1
+
+[connection signal="timeout" from="Gui/Timer" to="." method="save_game"]
+[connection signal="save_button_pressed" from="Pause Menu" to="." method="_on_pause_menu_save_button_pressed"]

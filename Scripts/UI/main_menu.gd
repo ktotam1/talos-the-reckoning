@@ -5,7 +5,7 @@ var all_saves = SaveMetadata.new();
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Hide all submenus
-	$"All Saves".visible = false;
+	$"Sub Options".visible=false; # as a parent container, this will make all children invisible as well
 	
 	# Load saves
 	__load_saves();
@@ -26,7 +26,7 @@ func __load_saves():
 		$"All Saves".add_child(__get_load_game_item(save_metadata))
 		
 	#Finally, add the "Create new game" element
-	$"All Saves".add_child(__get_create_new_game_element())
+	$"Sub Options/All Saves".add_child(__get_create_new_game_element())
 
 func __get_create_new_game_element()->Button:
 	var btn = Button.new()
@@ -57,14 +57,15 @@ func __get_load_game_item(save_metadata:SaveInfoItem)->HBoxContainer:
 	return ret
 
 func _create_new_game():
-	get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")
+	get_tree().change_scene_to_file("res://Scenes/GameManager.tscn")
 	
 func _load_and_start_game(save_path:String):
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func _input(event):
+	if event.is_action_pressed("ui_mainmenu_clear"):
+		$"Sub Options".visible=false;
 
 
 func _on_quit_pressed():
@@ -72,5 +73,7 @@ func _on_quit_pressed():
 
 
 func _on_load_pressed():
-	$"All Saves".visible = true;
+	$"Sub Options".visible = false; #Clear current submenu
+	$"Sub Options".visible = true;
+	$"Sub Options/All Saves".visible = true;
 	

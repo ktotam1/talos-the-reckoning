@@ -11,6 +11,9 @@ const SAVES_FULL_DIR = ROOT_DIR+SAVES_DIR_NAME;
 const SAVES_METADATA_FILENAME="all_saves"
 const SAVES_METADATA_FULL_NAME = SAVES_METADATA_FILENAME+".tres"
 
+var game_manager_singleton : GameManager
+
+signal toggle_game_paused(is_paused: bool)
 # UNUSED FOR NOW
 func _ready():
 	pass # Replace with function body.
