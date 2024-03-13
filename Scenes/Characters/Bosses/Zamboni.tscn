@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb3fju3gp4qmo"]
+
+[ext_resource type="Texture2D" uid="uid://bdx38vqc2xijq" path="res://Assets/Casual Enemies/Zamboni/ezgif.com-gif-maker-removebg-preview.png" id="1_3wo7c"]
+[ext_resource type="Script" path="res://Scripts/Characters/Bosses/Zamboni.gd" id="1_4hk1u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i7q7"]
+atlas = ExtResource("1_3wo7c")
+region = Rect2(0, 0, 400, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgh5s"]
+atlas = ExtResource("1_3wo7c")
+region = Rect2(400, 0, 400, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f75x2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i7q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgh5s")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uus76"]
+size = Vector2(34, 25.5)
+
+[node name="Zamboni" type="CharacterBody2D"]
+script = ExtResource("1_4hk1u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -0.5)
+scale = Vector2(0.19875, 0.205)
+sprite_frames = SubResource("SpriteFrames_f75x2")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_uus76")

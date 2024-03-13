@@ -1,27 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cy7q26vdtq8g"]
+[gd_scene load_steps=11 format=3 uid="uid://cy7q26vdtq8g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_1hh4u"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="1_a1tvw"]
+[ext_resource type="Texture2D" uid="uid://b1e2tlpkhwg4q" path="res://Assets/Props/gun.png" id="3_htdb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5md4"]
 atlas = ExtResource("1_a1tvw")
 region = Rect2(21, 2, 17, 30)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_63b2x"]
-atlas = ExtResource("1_a1tvw")
-region = Rect2(21, 2, 17, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yiudn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbnaj"]
 atlas = ExtResource("1_a1tvw")
 region = Rect2(21, 162, 17, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_36of6"]
-atlas = ExtResource("1_a1tvw")
-region = Rect2(40, 162, 17, 30)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mcwl"]
-atlas = ExtResource("1_a1tvw")
-region = Rect2(40, 194, 17, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6qalo"]
 atlas = ExtResource("1_a1tvw")
@@ -42,23 +31,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_p5md4")
 }],
 "loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5md4")
+}],
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_63b2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yiudn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36of6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4mcwl")
+"texture": SubResource("AtlasTexture_xbnaj")
 }],
-"loop": false,
+"loop": true,
 "name": &"jumping",
 "speed": 5.0
 }, {
@@ -92,3 +80,15 @@ position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_x8dgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Hand" type="Node2D" parent="."]
+
+[node name="Pivot" type="Node2D" parent="Hand"]
+
+[node name="Pistol" type="Sprite2D" parent="Hand/Pivot"]
+position = Vector2(5, 0)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("3_htdb8")
+
+[node name="PistolBulletMarker" type="Marker2D" parent="Hand/Pivot/Pistol"]
+position = Vector2(500, -200)

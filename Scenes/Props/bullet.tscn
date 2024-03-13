@@ -1,16 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://daoxl3bj58cuy"]
+[gd_scene load_steps=5 format=3 uid="uid://daoxl3bj58cuy"]
 
 [ext_resource type="Texture2D" uid="uid://dmsx8xrvgqvg4" path="res://Assets/Props/bullet.png" id="1_0vlfy"]
+[ext_resource type="Script" path="res://Scripts/Props/bullet.gd" id="1_ns7hb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uachf"]
-size = Vector2(2, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la4qi"]
+size = Vector2(10, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd743"]
+size = Vector2(10, 2)
 
 [node name="bullet" type="Area2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uachf")
+script = ExtResource("1_ns7hb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.90735e-06, -1.90735e-06)
-scale = Vector2(0.023, 0.024)
+rotation = 1.56207
+scale = Vector2(0.023, 0.022)
 texture = ExtResource("1_0vlfy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_la4qi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hd743")
+
+[node name="CollisionTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="NoCollisionTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="CollisionTimer" to="." method="_on_collision_timer_timeout"]
+[connection signal="timeout" from="NoCollisionTimer" to="." method="_on_no_collision_timer_timeout"]
