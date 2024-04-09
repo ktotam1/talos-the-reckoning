@@ -83,3 +83,7 @@ func _physics_process(delta):
 	animate(input_vector)
 	move_and_slide() 
 
+
+
+func _on_border_body_entered(body):
+	pass # Replace with function body.
