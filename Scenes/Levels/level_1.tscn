@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cagvaoasnbsj7"]
+[gd_scene load_steps=7 format=3 uid="uid://cagvaoasnbsj7"]
 
 [ext_resource type="PackedScene" uid="uid://cy7q26vdtq8g" path="res://Scenes/Characters/player.tscn" id="1_ec7wj"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="2_c2ajb"]
 [ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="3_pjng2"]
+[ext_resource type="PackedScene" uid="uid://8uyopurbat6x" path="res://Scenes/Characters/Enemies/Basic_Enemy.tscn" id="4_6ge12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wllld"]
 texture = ExtResource("2_c2ajb")
@@ -2783,3 +2784,8 @@ layer_0/tile_data = PackedInt32Array(262149, 131072, 0, 327685, 131072, 1, 39322
 position = Vector2(196, 10)
 face_left = false
 leaving_scene = false
+
+[node name="Enemies" type="CanvasGroup" parent="."]
+
+[node name="Basic_Enemy" parent="Enemies" instance=ExtResource("4_6ge12")]
+position = Vector2(396, 26)
