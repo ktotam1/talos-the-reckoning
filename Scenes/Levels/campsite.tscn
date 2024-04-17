@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cbkq0fkaahgyf"]
+[gd_scene load_steps=57 format=3 uid="uid://cbkq0fkaahgyf"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/campsite.gd" id="1_s05hs"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="1_sp1hl"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/Levels/Campsite/CampGuard.gd" id="15_v8c6k"]
 [ext_resource type="Texture2D" uid="uid://h5iriy4x5411" path="res://Assets/Friendlies/CampGuard/GraveRobber_idle.png" id="16_nyju7"]
 [ext_resource type="Texture2D" uid="uid://dd2t5gut7jrdc" path="res://Assets/Friendlies/CampGuard/GraveRobber_walk.png" id="17_12map"]
+[ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="18_nptb4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72xi3"]
 texture = ExtResource("1_sp1hl")
@@ -3706,6 +3707,53 @@ animation = &"walking"
 autoplay = "idle"
 
 [node name="Timer" type="Timer" parent="NPCs/Path2D/PathFollow2D/Area2D"]
+
+[node name="Portal" parent="." instance=ExtResource("18_nptb4")]
+position = Vector2(738, 87)
+
+[node name="Trees2" type="CanvasGroup" parent="."]
+
+[node name="11" type="Sprite2D" parent="Trees2"]
+position = Vector2(833, 62)
+texture = ExtResource("3_1vx8l")
+
+[node name="13" type="Sprite2D" parent="Trees2"]
+position = Vector2(790, 62)
+texture = ExtResource("3_1vx8l")
+
+[node name="14" type="Sprite2D" parent="Trees2"]
+position = Vector2(770, 62)
+texture = ExtResource("3_1vx8l")
+
+[node name="7" type="Sprite2D" parent="Trees2"]
+position = Vector2(885, 70)
+texture = ExtResource("4_eja7d")
+
+[node name="8" type="Sprite2D" parent="Trees2"]
+position = Vector2(859, 67)
+texture = ExtResource("5_u2kbm")
+
+[node name="10" type="Sprite2D" parent="Trees2"]
+position = Vector2(894, 62)
+texture = ExtResource("3_1vx8l")
+
+[node name="12" type="Sprite2D" parent="Trees2"]
+position = Vector2(870, 73)
+texture = ExtResource("6_p12e0")
+
+[node name="9" type="Sprite2D" parent="Trees2"]
+position = Vector2(816, 70)
+texture = ExtResource("4_eja7d")
+
+[node name="Border" type="RigidBody2D" parent="Trees2"]
+position = Vector2(831, 1)
+max_contacts_reported = 10
+contact_monitor = true
+can_sleep = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trees2/Border"]
+position = Vector2(-18, 50)
+shape = SubResource("RectangleShape2D_ibcyy")
 
 [connection signal="animation_finished" from="Chest/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Chest/Area2D" to="." method="_on_area_2d_area_entered"]
