@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://8uyopurbat6x"]
+[gd_scene load_steps=29 format=3 uid="uid://8uyopurbat6x"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemies/Basic_Enemy.gd" id="1_877ha"]
 [ext_resource type="Texture2D" uid="uid://de1eltxvh4xb6" path="res://Assets/Casual Enemies/Normal Robots/shield droid/shock attack.png" id="1_kjcsa"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxdkiutrutxh" path="res://Assets/Casual Enemies/Normal Robots/shield droid/walk.png" id="2_avoyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wh74v"]
-size = Vector2(20, 21)
+size = Vector2(20, 22)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0jli"]
 atlas = ExtResource("1_kjcsa")
@@ -173,11 +173,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqoui"]
+size = Vector2(20, 21)
+
 [node name="Basic_Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_877ha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 4.5)
+position = Vector2(-1, 5)
 shape = SubResource("RectangleShape2D_wh74v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -186,5 +191,13 @@ animation = &"attack"
 autoplay = "idle"
 frame = 13
 frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 4.5)
+shape = SubResource("RectangleShape2D_yqoui")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

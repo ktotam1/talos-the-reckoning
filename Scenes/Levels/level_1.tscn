@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cagvaoasnbsj7"]
+[gd_scene load_steps=8 format=3 uid="uid://cagvaoasnbsj7"]
 
 [ext_resource type="PackedScene" uid="uid://cy7q26vdtq8g" path="res://Scenes/Characters/player.tscn" id="1_ec7wj"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="2_c2ajb"]
 [ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="3_pjng2"]
 [ext_resource type="PackedScene" uid="uid://8uyopurbat6x" path="res://Scenes/Characters/Enemies/Basic_Enemy.tscn" id="4_6ge12"]
+[ext_resource type="PackedScene" uid="uid://bb3fju3gp4qmo" path="res://Scenes/Characters/Bosses/Zamboni.tscn" id="5_eujo2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wllld"]
 texture = ExtResource("2_c2ajb")
@@ -2767,7 +2768,8 @@ texture = ExtResource("2_c2ajb")
 31:27/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_chyde"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 71
 sources/0 = SubResource("TileSetAtlasSource_wllld")
 
 [node name="Level_1" type="Node2D"]
@@ -2789,3 +2791,6 @@ leaving_scene = false
 
 [node name="Basic_Enemy" parent="Enemies" instance=ExtResource("4_6ge12")]
 position = Vector2(396, 26)
+
+[node name="Zamboni" parent="." instance=ExtResource("5_eujo2")]
+position = Vector2(274, 18)

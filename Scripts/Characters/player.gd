@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animator : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand : Node2D = $Hand
 
+
 var charging_jump = false
 var jump_held = Time.get_ticks_msec()
 var did_double_jump = false
