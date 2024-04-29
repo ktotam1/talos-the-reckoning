@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cy7q26vdtq8g"]
+[gd_scene load_steps=12 format=3 uid="uid://cy7q26vdtq8g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_1hh4u"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="1_a1tvw"]
@@ -68,7 +68,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8dgy"]
 size = Vector2(9, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fesp"]
+size = Vector2(9, 25)
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 7
 script = ExtResource("1_1hh4u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -92,3 +96,11 @@ texture = ExtResource("3_htdb8")
 
 [node name="PistolBulletMarker" type="Marker2D" parent="Hand/Pivot/Pistol"]
 position = Vector2(500, -200)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_4fesp")

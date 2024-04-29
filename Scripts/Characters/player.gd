@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animator : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand : Node2D = $Hand
 
+
 var charging_jump = false
 var jump_held = Time.get_ticks_msec()
 var did_double_jump = false
@@ -30,6 +31,7 @@ func input_movement():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	pass # Replace with function body.
 
 
@@ -83,3 +85,7 @@ func _physics_process(delta):
 	animate(input_vector)
 	move_and_slide() 
 
+
+
+func _on_border_body_entered(body):
+	pass # Replace with function body.

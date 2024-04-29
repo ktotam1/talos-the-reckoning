@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb3fju3gp4qmo"]
+[gd_scene load_steps=8 format=3 uid="uid://bb3fju3gp4qmo"]
 
 [ext_resource type="Texture2D" uid="uid://bdx38vqc2xijq" path="res://Assets/Casual Enemies/Zamboni/ezgif.com-gif-maker-removebg-preview.png" id="1_3wo7c"]
 [ext_resource type="Script" path="res://Scripts/Characters/Bosses/Zamboni.gd" id="1_4hk1u"]
@@ -28,7 +28,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uus76"]
 size = Vector2(34, 25.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpg4a"]
+size = Vector2(34, 26)
+
 [node name="Zamboni" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_4hk1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -40,3 +45,11 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.25)
 shape = SubResource("RectangleShape2D_uus76")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gpg4a")

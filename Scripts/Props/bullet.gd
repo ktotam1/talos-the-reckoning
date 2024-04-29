@@ -12,6 +12,7 @@ var destroyed : bool = false
 @onready var no_collision_timer : Timer = $NoCollisionTimer
 @onready var hitbox : Area2D = $Hitbox
 @onready var hitbox_collision : CollisionShape2D = $Hitbox/CollisionShape2D
+@onready var collision : CollisionShape2D = $CollisionShape2D
 
 func _ready():
 	#hitbox.knockback_vector = target_vector #Updating the knockback vector
@@ -44,8 +45,16 @@ func _on_no_collision_timer_timeout():
 
 
 func _on_body_entered(body):
-	if body.name != "Player":
-		die()
-		if not destroyed:
-			#AudioManager.play_sound(AudioManager.BULLET)
-			destroyed = true # Replace with function body.
+	die()
+	if not destroyed:
+		#AudioManager.play_sound(AudioManager.BULLET)
+		destroyed = true # Replace with function body.
+
+
+
+
+func _on_hitbox_area_entered(area):
+	die()
+	if not destroyed:
+		#AudioManager.play_sound(AudioManager.BULLET)
+		destroyed = true # Replace with function body.
