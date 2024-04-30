@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cy7q26vdtq8g"]
+[gd_scene load_steps=14 format=3 uid="uid://cy7q26vdtq8g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_1hh4u"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="1_a1tvw"]
 [ext_resource type="Texture2D" uid="uid://b1e2tlpkhwg4q" path="res://Assets/Props/gun.png" id="3_htdb8"]
+[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="4_vgsky"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5md4"]
 atlas = ExtResource("1_a1tvw")
@@ -69,7 +70,14 @@ animations = [{
 size = Vector2(9, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fesp"]
-size = Vector2(9, 25)
+size = Vector2(12, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpy15"]
+bg_color = Color(0.0196078, 1, 0.0470588, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
@@ -102,5 +110,17 @@ collision_layer = 8
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1.5, 0.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_4fesp")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -12.0
+offset_top = -20.0
+offset_right = 11.0
+offset_bottom = -16.0
+theme_override_styles/background = ExtResource("4_vgsky")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gpy15")
+step = 1.0
+show_percentage = false
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

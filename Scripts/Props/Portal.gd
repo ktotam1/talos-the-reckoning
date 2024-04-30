@@ -29,6 +29,6 @@ func _on_body_exited(body):
 
 func _on_animated_sprite_2d_animation_finished():
 	if leaving_scene:
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_1.tscn")# Replace with function body.
+		get_tree().change_scene_to_file("res://Scenes/Levels/" + next_scene + ".tscn")# Replace with function body.
 	else:
 		self.monitoring=false
