@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5mds8lykmw06"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Dialogue.gd" id="1_106sa"]
+[ext_resource type="Texture2D" uid="uid://4vmejl8r6ker" path="res://Resources/UI/Custom Border and Panels Menu All Part/Border All 12.png" id="1_e60ps"]
+[ext_resource type="FontFile" uid="uid://0fbkki2itwk4" path="res://Resources/UI/Fonts/static/Exo-Regular.ttf" id="2_3y3ka"]
+[ext_resource type="FontFile" uid="uid://difaw7aw32arj" path="res://Resources/UI/Fonts/static/Exo-Bold.ttf" id="3_0tc0o"]
+[ext_resource type="FontFile" uid="uid://camoguomiw5jh" path="res://Resources/UI/Fonts/static/Exo-Italic.ttf" id="4_i6fna"]
+[ext_resource type="FontFile" uid="uid://bvytx0ag8drlu" path="res://Resources/UI/Fonts/static/Exo-BoldItalic.ttf" id="5_3dohs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atuew"]
+texture = ExtResource("1_e60ps")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(192, 0, 64, 64)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e5jbi"]
+font = ExtResource("2_3y3ka")
+font_size = 60
+font_color = Color(0.0313726, 0.129412, 0.117647, 1)
+shadow_size = 0
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_106sa")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -38.0
+offset_right = 333.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/panel = SubResource("StyleBoxTexture_atuew")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="displayed_dialogue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+auto_translate = false
+theme_override_colors/default_color = Color(0.0313726, 0.129412, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("2_3y3ka")
+theme_override_fonts/bold_font = ExtResource("3_0tc0o")
+theme_override_fonts/italics_font = ExtResource("4_i6fna")
+theme_override_fonts/bold_italics_font = ExtResource("5_3dohs")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center] This is some text. [/center] "
+fit_content = true
+scroll_active = false
+language = "en"
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.748
+anchor_right = 1.0
+anchor_bottom = 0.748
+offset_left = -174.0
+offset_top = -1.64
+offset_right = 17.0
+offset_bottom = 110.36
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+theme_override_styles/panel = SubResource("StyleBoxTexture_atuew")
+
+[node name="character_name" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_e5jbi")
+horizontal_alignment = 1
+vertical_alignment = 1

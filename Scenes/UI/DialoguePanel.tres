@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://i00s0kym5eon"]
+
+[ext_resource type="Texture2D" uid="uid://4vmejl8r6ker" path="res://Resources/UI/Custom Border and Panels Menu All Part/Border All 12.png" id="1_jbywa"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tk83a"]
+texture = ExtResource("1_jbywa")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 46.0
+region_rect = Rect2(192, 0, 64, 64)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_tk83a")

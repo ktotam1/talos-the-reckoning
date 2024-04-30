@@ -10,6 +10,7 @@ signal save_game_signal
 # I am thus exporting it here
 @export_file("*.tscn") var FIRST_LEVEL
 
+var char_name = "HAHAH"
 
 var game_paused : bool = false:
 	get:
