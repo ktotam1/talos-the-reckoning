@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://jxkkdicyr4c5"]
+[gd_scene load_steps=15 format=3 uid="uid://jxkkdicyr4c5"]
 
 [ext_resource type="Texture2D" uid="uid://bshfe0ye7o1mb" path="res://Assets/Locations/Cyberpunk City/District/Tiles/sheet-platforms.png" id="1_7dppt"]
 [ext_resource type="PackedScene" uid="uid://cy7q26vdtq8g" path="res://Scenes/Characters/player.tscn" id="2_liwro"]
 [ext_resource type="PackedScene" uid="uid://8uyopurbat6x" path="res://Scenes/Characters/Enemies/Basic_Enemy.tscn" id="3_c0eaf"]
+[ext_resource type="PackedScene" uid="uid://tlbjjyt8qlf3" path="res://Scenes/Characters/Enemies/ToasterBot.tscn" id="4_0db63"]
 [ext_resource type="Texture2D" uid="uid://cg16o5ruysltb" path="res://Assets/Locations/Cyberpunk City/Sidescroller Shooter - Central City/Background/Background Props.png" id="4_i454g"]
 [ext_resource type="Texture2D" uid="uid://8lfq2hv755pu" path="res://Assets/Locations/Cyberpunk City/Sidescroller Shooter - Central City/Assets/Props-01.png" id="5_0wx1i"]
 [ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="6_12jm6"]
@@ -953,6 +954,30 @@ position = Vector2(166, 40)
 
 [node name="Basic_Enemy" parent="enemies" instance=ExtResource("3_c0eaf")]
 position = Vector2(312, 30)
+
+[node name="ToasterBot" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(171, -114)
+rotation = -1.5776
+
+[node name="ToasterBot2" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(315, -115)
+rotation = -1.5776
+
+[node name="ToasterBot3" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(474, -115)
+rotation = -1.5776
+
+[node name="ToasterBot4" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(586, -115)
+rotation = -1.5776
+
+[node name="ToasterBot5" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(698, -116)
+rotation = -1.5776
+
+[node name="ToasterBot6" parent="enemies" instance=ExtResource("4_0db63")]
+position = Vector2(778, -72)
+rotation = -0.00370985
 
 [node name="SecondFloor" type="CanvasGroup" parent="."]
 z_index = -2

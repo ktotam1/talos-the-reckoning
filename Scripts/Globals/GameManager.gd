@@ -55,6 +55,6 @@ func set_current_level(scene_name : String):
 		current_level.queue_free()
 		
 	var new_level_scene_res = load(scene_name)
-d	var new_level_scene_node = new_level_scene_res.instantiate()
+	var new_level_scene_node = new_level_scene_res.instantiate()
 	current_level_parent.add_child(new_level_scene_node)
 
