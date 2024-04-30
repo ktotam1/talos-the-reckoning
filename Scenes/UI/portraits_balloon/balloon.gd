@@ -4,7 +4,7 @@ extends CanvasLayer
 @export var response_template: Node
 @export var file_suffix: String = ""
 
-@onready var balloon: Panel = $Panel
+@onready var balloon: ColorRect = $Panel
 @onready var margin: MarginContainer = $Panel/Margin
 @onready var character_portrait: Sprite2D = $Panel/Margin/HBox/Portrait/Sprite2D
 @onready var character_label: RichTextLabel = $Panel/Margin/HBox/VBox/CharacterLabel

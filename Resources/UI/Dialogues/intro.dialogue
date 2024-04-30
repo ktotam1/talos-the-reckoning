@@ -1,21 +1,21 @@
 ~ scene_1
 
 John: Stop! Who comes here? Identify yourself or I will shoot!
-Narrator: {{Globals.game_manager_object.char_name}}’s organs screamed their displeasure as he grunted in pain, unable to answer this rather simple question.
-John: {{Globals.game_manager_object.char_name}}... {{Globals.game_manager_object.char_name}}, is that you?
+Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grunted in pain, unable to answer this rather simple question.
+John: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 Narrator: ...
-{{Globals.game_manager_object.char_name}}: I don’t...
+{{Globals.char_name}}: I don’t...
 
 => END
 
 ~ scene_2
-{{Globals.game_manager_object.char_name}}: What is going on? Where am I?
-John: {{Globals.game_manager_object.char_name}}, it’s me John? Do you not remember me?
+{{Globals.char_name}}: What is going on? Where am I?
+John: {{Globals.char_name}}, it’s me John? Do you not remember me?
 John: The doctor mentioned you had a concussion, but I didn’t think it would lead to amnesia. Do you not remember this place?
-{{Globals.game_manager_object.char_name}}: No.
+{{Globals.char_name}}: No.
 John: Well in that case, let me show you around.
-{{Globals.game_manager_object.char_name}} This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
-{{Globals.game_manager_object.char_name}} Robots?
+{{Globals.char_name}} This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
+{{Globals.char_name}} Robots?
 John: Yeah, robots? Have you not seen them everywhere, they’re even in the forest where you came from! Your situation’s worse than I’d thought huh
 John: In that case, let me take you to a trip down history.
 John: In 2037, scientists discovered a revolutionary way to very efficiently parse video data in real time! We’re talking a 200x improvement on what we had back then
@@ -51,11 +51,11 @@ John: Well, when I say everyone, I mean everyone but us.
 
 John: We’re a small group of revolutionaries, the Argonauts, standing against the abuse of the Robots. I mean, we created them, how is it fair that they control us now…
 
-John: And you {{Globals.game_manager_object.char_name}}, are our leader.
+John: And you {{Globals.char_name}}, are our leader.
 
-{{Globals.game_manager_object.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
+{{Globals.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
 
-John: Haha, nice one {{Globals.game_manager_object.char_name}}. Now, follow me and show me that you’ve still got it.
+John: Haha, nice one {{Globals.char_name}}. Now, follow me and show me that you’ve still got it.
 
 
 => END
@@ -69,26 +69,26 @@ John: Shoot those dummies and targets!
 John: Wow! People have always praised me your abilities, but seeing it with my own eyes is a completely different thing. I’m blown away.
 
 
-Petra: {{Globals.game_manager_object.char_name}}! You’re back! It’s great to see you!
+Petra: {{Globals.char_name}}! You’re back! It’s great to see you!
 
-{{Globals.game_manager_object.char_name}}: Uhhhh, thanks. You too I guess?
+{{Globals.char_name}}: Uhhhh, thanks. You too I guess?
 
 John: He was in a pretty bad state when he returned to camp. Doctors think he has amnesia, don’t take it personally <SC1>
 
 Petra: Ah, I see. Anyways, we don’t have time for this. We’ve had a breach in sector 4 of our campsite. <rNCP1> weren’t you supposed to patrol there??
 
-John: Uhhhhhh, nooo? Maybe? I might have been taken away by {{Globals.game_manager_object.char_name}} over here, whoops. I’m on my way, <SC1> come with me, I’ll need backup.
+John: Uhhhhhh, nooo? Maybe? I might have been taken away by {{Globals.char_name}} over here, whoops. I’m on my way, <SC1> come with me, I’ll need backup.
 
-Petra: Sure thing. {{Globals.game_manager_object.char_name}}, <rNCP1> was supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
+Petra: Sure thing. {{Globals.char_name}}, <rNCP1> was supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
 
 Petra: Can you replace him ? Do you feel ready?
-- {{Globals.game_manager_object.char_name}}: I was born ready. => p0
-- {{Globals.game_manager_object.char_name}}: WHAT?! You want me to go the place Talos himself made his first victims? => p1
+- {{Globals.char_name}}: I was born ready. => p0
+- {{Globals.char_name}}: WHAT?! You want me to go the place Talos himself made his first victims? => p1
 
 ~ p0
-Petra: Yeah, {{Globals.game_manager_object.char_name}}’s back babyyy!
+Petra: Yeah, {{Globals.char_name}}’s back babyyy!
 => END
 
 ~ p1
-Petra: Haha, I forgot how big of a joker you were {{Globals.game_manager_object.char_name}}’s, nice one.than: You picked the second one.
+Petra: Haha, I forgot how big of a joker you were {{Globals.char_name}}’s, nice one.than: You picked the second one.
 => END

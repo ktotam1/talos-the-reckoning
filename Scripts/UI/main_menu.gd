@@ -9,7 +9,7 @@ func _ready():
 	
 	# Load saves
 	__load_saves();
-		
+	
 	
 func __load_saves():
 	var dir = DirAccess.open(Globals.SAVES_FULL_DIR);

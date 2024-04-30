@@ -12,6 +12,7 @@ const SAVES_METADATA_FILENAME="all_saves"
 const SAVES_METADATA_FULL_NAME = SAVES_METADATA_FILENAME+".tres"
 
 var game_manager_singleton : GameManager
+var char_name = "HAHAHA"
 
 signal toggle_game_paused(is_paused: bool)
 

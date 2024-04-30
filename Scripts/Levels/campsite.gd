@@ -1,5 +1,10 @@
 extends Node
 
+
+@onready var balloon_scene : PackedScene = load("res://Scenes/UI/Dialogue.tscn")
+@onready var intro_dialogue : DialogueResource = load("res://Resources/UI/Dialogues/intro.dialogue")
+@onready var start = "scene_1"
+
 @onready var chest: AnimatedSprite2D = $Chest/AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,4 +31,5 @@ func _on_animated_sprite_2d_animation_finished(anim_name):
 
 
 func _on_dialogue_start_area_entered(area):
-	print("entered") # Replace with function body.
+	DialogueManager.show_dialogue_balloon_scene(balloon_scene, intro_dialogue, start)
+

@@ -3,6 +3,7 @@ class_name GameManager
 
 signal toggle_game_paused(is_paused: bool)
 signal save_game_signal
+signal dialog_forward_input(event: InputEvent)
 
 # Because of a bug in Godot not following the spec of GDScript's @export annotation, exporting this
 # in the Global's file (where it should be) doesn't make it show up in the Inspector, making it 
@@ -26,9 +27,12 @@ func _ready():
 	toggle_game_paused.connect($"CanvasLayer/Pause Menu".game_manager_requested_pause)
 	set_current_level(FIRST_LEVEL)
 	
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	DialogueManager.get_current_scene = func(): return $"Gui/Current Level"
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _input(event):
@@ -58,3 +62,6 @@ func set_current_level(scene_name : String):
 	var new_level_scene_node = new_level_scene_res.instantiate()
 	current_level_parent.add_child(new_level_scene_node)
 
+func _on_dialogue_ended(_resource: DialogueResource):
+	get_tree().paused = false
+	print("[Game Manager]: Dialogue ended!")

@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://yus1loxriev2"]
+[gd_scene load_steps=13 format=3 uid="uid://yus1loxriev2"]
 
 [ext_resource type="Script" path="res://Scenes/UI/portraits_balloon/balloon.gd" id="1_bf5nr"]
 [ext_resource type="Texture2D" uid="uid://4vmejl8r6ker" path="res://Resources/UI/Custom Border and Panels Menu All Part/Border All 12.png" id="2_lxcaw"]
+[ext_resource type="FontFile" uid="uid://0fbkki2itwk4" path="res://Resources/UI/Fonts/static/Exo-Regular.ttf" id="4_7orgo"]
+[ext_resource type="FontFile" uid="uid://b45ecomlqpx3a" path="res://Resources/UI/Fonts/static/Exo-ExtraBold.ttf" id="4_i5st8"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_m3ccg"]
+[ext_resource type="FontFile" uid="uid://difaw7aw32arj" path="res://Resources/UI/Fonts/static/Exo-Bold.ttf" id="5_50411"]
+[ext_resource type="FontFile" uid="uid://dcjk02f7o3xck" path="res://Resources/UI/Fonts/static/Exo-ExtraBoldItalic.ttf" id="6_2wsha"]
+[ext_resource type="FontFile" uid="uid://camoguomiw5jh" path="res://Resources/UI/Fonts/static/Exo-Italic.ttf" id="6_lkof5"]
+[ext_resource type="FontFile" uid="uid://bvytx0ag8drlu" path="res://Resources/UI/Fonts/static/Exo-BoldItalic.ttf" id="7_q4403"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x54rj"]
 texture = ExtResource("2_lxcaw")
@@ -70,6 +76,11 @@ theme_override_constants/separation = 10
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/default_color = Color(0.0823529, 0.411765, 0.376471, 1)
+theme_override_fonts/normal_font = ExtResource("5_50411")
+theme_override_fonts/bold_font = ExtResource("4_i5st8")
+theme_override_fonts/italics_font = ExtResource("7_q4403")
+theme_override_fonts/bold_italics_font = ExtResource("6_2wsha")
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -77,6 +88,11 @@ scroll_active = false
 
 [node name="DialogueLabel" parent="Panel/Margin/HBox/VBox" instance=ExtResource("4_m3ccg")]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.0313726, 0.129412, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("4_7orgo")
+theme_override_fonts/bold_font = ExtResource("5_50411")
+theme_override_fonts/italics_font = ExtResource("6_lkof5")
+theme_override_fonts/bold_italics_font = ExtResource("7_q4403")
 text = "Dialogue"
 
 [node name="Responses" type="VBoxContainer" parent="Panel/Margin/HBox/VBox"]
@@ -85,6 +101,11 @@ theme_override_constants/separation = 2
 
 [node name="ResponseTemplate" type="RichTextLabel" parent="Panel/Margin/HBox/VBox"]
 layout_mode = 2
+theme_override_colors/default_color = Color(0.0313726, 0.129412, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("4_7orgo")
+theme_override_fonts/bold_font = ExtResource("5_50411")
+theme_override_fonts/italics_font = ExtResource("6_lkof5")
+theme_override_fonts/bold_italics_font = ExtResource("7_q4403")
 theme_override_styles/focus = SubResource("StyleBoxFlat_5d24i")
 theme_override_styles/normal = SubResource("StyleBoxFlat_oj3c8")
 bbcode_enabled = true

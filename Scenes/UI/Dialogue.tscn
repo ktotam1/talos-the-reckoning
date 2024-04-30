@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5mds8lykmw06"]
+[gd_scene load_steps=13 format=3 uid="uid://b5mds8lykmw06"]
 
 [ext_resource type="Script" path="res://Scenes/UI/Dialogue.gd" id="1_106sa"]
 [ext_resource type="Texture2D" uid="uid://4vmejl8r6ker" path="res://Resources/UI/Custom Border and Panels Menu All Part/Border All 12.png" id="1_e60ps"]
 [ext_resource type="FontFile" uid="uid://0fbkki2itwk4" path="res://Resources/UI/Fonts/static/Exo-Regular.ttf" id="2_3y3ka"]
 [ext_resource type="FontFile" uid="uid://difaw7aw32arj" path="res://Resources/UI/Fonts/static/Exo-Bold.ttf" id="3_0tc0o"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_emjki"]
 [ext_resource type="FontFile" uid="uid://camoguomiw5jh" path="res://Resources/UI/Fonts/static/Exo-Italic.ttf" id="4_i6fna"]
 [ext_resource type="FontFile" uid="uid://bvytx0ag8drlu" path="res://Resources/UI/Fonts/static/Exo-BoldItalic.ttf" id="5_3dohs"]
+[ext_resource type="FontFile" uid="uid://b45ecomlqpx3a" path="res://Resources/UI/Fonts/static/Exo-ExtraBold.ttf" id="8_8bnqt"]
+[ext_resource type="FontFile" uid="uid://dcjk02f7o3xck" path="res://Resources/UI/Fonts/static/Exo-ExtraBoldItalic.ttf" id="9_1ulla"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atuew"]
 texture = ExtResource("1_e60ps")
@@ -15,58 +18,104 @@ texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 region_rect = Rect2(192, 0, 64, 64)
 
-[sub_resource type="LabelSettings" id="LabelSettings_e5jbi"]
-font = ExtResource("2_3y3ka")
-font_size = 60
-font_color = Color(0.0313726, 0.129412, 0.117647, 1)
-shadow_size = 0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8lvm"]
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 0.25098)
 
-[node name="Dialogue" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7eik"]
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+draw_center = false
+
+[node name="Dialogue" type="CanvasLayer" node_paths=PackedStringArray("response_template")]
+process_mode = 3
+script = ExtResource("1_106sa")
+response_template = NodePath("balloon/main_dialog_panel/Margin/HBox/VBox/ResponseTemplate")
+
+[node name="balloon" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_106sa")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="main_dialog_panel" type="PanelContainer" parent="balloon"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 37.0
-offset_top = -38.0
+offset_top = -52.0
 offset_right = 333.0
-offset_bottom = 56.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.4, 0.4)
 theme_override_styles/panel = SubResource("StyleBoxTexture_atuew")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="Margin" type="MarginContainer" parent="balloon/main_dialog_panel"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-alignment = 1
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_layout_mode = 1
 
-[node name="displayed_dialogue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
-clip_contents = false
+[node name="HBox" type="HBoxContainer" parent="balloon/main_dialog_panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Portrait" type="Control" parent="balloon/main_dialog_panel/Margin/HBox"]
+custom_minimum_size = Vector2(106, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="balloon/main_dialog_panel/Margin/HBox/Portrait"]
+centered = false
+
+[node name="VBox" type="VBoxContainer" parent="balloon/main_dialog_panel/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-auto_translate = false
+alignment = 1
+
+[node name="DialogueLabel" parent="balloon/main_dialog_panel/Margin/HBox/VBox" instance=ExtResource("3_emjki")]
+layout_mode = 2
 theme_override_colors/default_color = Color(0.0313726, 0.129412, 0.117647, 1)
 theme_override_fonts/normal_font = ExtResource("2_3y3ka")
 theme_override_fonts/bold_font = ExtResource("3_0tc0o")
 theme_override_fonts/italics_font = ExtResource("4_i6fna")
 theme_override_fonts/bold_italics_font = ExtResource("5_3dohs")
-theme_override_font_sizes/normal_font_size = 20
+text = "Dialogue"
+
+[node name="Responses" type="VBoxContainer" parent="balloon/main_dialog_panel/Margin/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ResponseTemplate" type="RichTextLabel" parent="balloon/main_dialog_panel/Margin/HBox/VBox"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.0313726, 0.129412, 0.117647, 1)
+theme_override_fonts/normal_font = ExtResource("2_3y3ka")
+theme_override_fonts/bold_font = ExtResource("3_0tc0o")
+theme_override_fonts/italics_font = ExtResource("4_i6fna")
+theme_override_fonts/bold_italics_font = ExtResource("5_3dohs")
+theme_override_styles/focus = SubResource("StyleBoxFlat_l8lvm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_w7eik")
 bbcode_enabled = true
-text = "[center] This is some text. [/center] "
+text = "Response"
 fit_content = true
 scroll_active = false
-language = "en"
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
 
-[node name="PanelContainer2" type="PanelContainer" parent="."]
+[node name="character_container" type="PanelContainer" parent="balloon"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -74,17 +123,26 @@ anchor_top = 0.748
 anchor_right = 1.0
 anchor_bottom = 0.748
 offset_left = -174.0
-offset_top = -1.64
+offset_top = -13.64
 offset_right = 17.0
-offset_bottom = 110.36
+offset_bottom = 98.36
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.15, 0.15)
 theme_override_styles/panel = SubResource("StyleBoxTexture_atuew")
 
-[node name="character_name" type="Label" parent="PanelContainer2"]
+[node name="CharacterLabel" type="RichTextLabel" parent="balloon/character_container"]
+modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
-text = "Name"
-label_settings = SubResource("LabelSettings_e5jbi")
-horizontal_alignment = 1
-vertical_alignment = 1
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.0823529, 0.411765, 0.376471, 1)
+theme_override_fonts/normal_font = ExtResource("3_0tc0o")
+theme_override_fonts/bold_font = ExtResource("8_8bnqt")
+theme_override_fonts/italics_font = ExtResource("5_3dohs")
+theme_override_fonts/bold_italics_font = ExtResource("9_1ulla")
+bbcode_enabled = true
+text = "[center]Character"
+fit_content = true
+scroll_active = false
+
+[connection signal="gui_input" from="balloon" to="." method="_on_balloon_gui_input"]
