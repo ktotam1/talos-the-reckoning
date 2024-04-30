@@ -1,9 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://8uyopurbat6x"]
+[gd_scene load_steps=32 format=3 uid="uid://8uyopurbat6x"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Enemies/Basic_Enemy.gd" id="1_877ha"]
 [ext_resource type="Texture2D" uid="uid://de1eltxvh4xb6" path="res://Assets/Casual Enemies/Normal Robots/shield droid/shock attack.png" id="1_kjcsa"]
 [ext_resource type="Texture2D" uid="uid://c8xd5lypnsx5b" path="res://Assets/Casual Enemies/Normal Robots/shield droid/static idle.png" id="1_la3wk"]
 [ext_resource type="Texture2D" uid="uid://dkxdkiutrutxh" path="res://Assets/Casual Enemies/Normal Robots/shield droid/walk.png" id="2_avoyt"]
+[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="5_v07d1"]
+[ext_resource type="StyleBox" uid="uid://bxvhi48dcf6eo" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="6_ivt2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wh74v"]
 size = Vector2(20, 22)
@@ -12,13 +14,13 @@ size = Vector2(20, 22)
 atlas = ExtResource("1_kjcsa")
 region = Rect2(0, 0, 90, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wr7kt"]
-atlas = ExtResource("1_kjcsa")
-region = Rect2(0, 31, 90, 31)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5iny"]
 atlas = ExtResource("1_kjcsa")
 region = Rect2(0, 62, 90, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr7kt"]
+atlas = ExtResource("1_kjcsa")
+region = Rect2(0, 31, 90, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kulbj"]
 atlas = ExtResource("1_kjcsa")
@@ -99,10 +101,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_j0jli")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wr7kt")
+"texture": SubResource("AtlasTexture_u5iny")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u5iny")
+"texture": SubResource("AtlasTexture_wr7kt")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kulbj")
@@ -139,7 +141,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -170,11 +172,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqoui"]
 size = Vector2(20, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hypis"]
+size = Vector2(17.5, 17)
 
 [node name="Basic_Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -187,10 +192,8 @@ shape = SubResource("RectangleShape2D_wh74v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2ni3y")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
-frame = 13
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 32
@@ -200,4 +203,25 @@ collision_mask = 64
 position = Vector2(-1, 4.5)
 shape = SubResource("RectangleShape2D_yqoui")
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = -8.0
+theme_override_styles/background = ExtResource("5_v07d1")
+theme_override_styles/fill = ExtResource("6_ivt2v")
+step = 1.0
+show_percentage = false
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+texture_filter = 2
+position = Vector2(-0.75, 6)
+shape = SubResource("RectangleShape2D_hypis")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

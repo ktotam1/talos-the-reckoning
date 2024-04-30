@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b5itom26ioiuu" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Trees/7.png" id="4_eja7d"]
 [ext_resource type="Texture2D" uid="uid://b1s8p33tgwklk" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Trees/8.png" id="5_u2kbm"]
 [ext_resource type="Texture2D" uid="uid://hhrh1kf4trsr" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Trees/12.png" id="6_p12e0"]
-[ext_resource type="Texture2D" uid="uid://b3j574ivbcxwj" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/1 Tiles/Tile_05.png" id="7_wjwc2"]
-[ext_resource type="Texture2D" uid="uid://bar4dqopyuf3k" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/1 Tiles/Tile_06.png" id="8_ee1c0"]
+[ext_resource type="Texture2D" uid="uid://b3j574ivbcxwj" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Grass/1 Tiles/Tile_05.png" id="7_oiob1"]
+[ext_resource type="Texture2D" uid="uid://bar4dqopyuf3k" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Grass/1 Tiles/Tile_06.png" id="8_f75vu"]
 [ext_resource type="Texture2D" uid="uid://dnsoa33xnojdf" path="res://Assets/Locations/Camp/Misc/CampFireFinished.png" id="9_kbay4"]
 [ext_resource type="Texture2D" uid="uid://b5vr7ovi8bnkq" path="res://Assets/Locations/Camp/Misc/tent.png" id="10_argnd"]
 [ext_resource type="Texture2D" uid="uid://dk5tps4av6o85" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Trees/9.png" id="11_4hguv"]
@@ -3597,6 +3597,8 @@ position = Vector2(-15, 69)
 texture = ExtResource("4_eja7d")
 
 [node name="Border" type="RigidBody2D" parent="Trees"]
+collision_layer = 4
+collision_mask = 4
 max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
@@ -3611,11 +3613,11 @@ z_index = -1
 [node name="Tile05" type="Sprite2D" parent="Background"]
 position = Vector2(119, 98)
 scale = Vector2(0.78125, 0.875)
-texture = ExtResource("7_wjwc2")
+texture = ExtResource("7_oiob1")
 
 [node name="Tile06" type="Sprite2D" parent="Background"]
 position = Vector2(261, 96)
-texture = ExtResource("8_ee1c0")
+texture = ExtResource("8_f75vu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background"]
 position = Vector2(353.2, 83.6448)
@@ -3708,6 +3710,7 @@ autoplay = "idle"
 
 [node name="Portal" parent="." instance=ExtResource("18_nptb4")]
 position = Vector2(738, 87)
+next_scene = "level_1"
 
 [node name="Trees2" type="CanvasGroup" parent="."]
 
@@ -3745,6 +3748,8 @@ texture = ExtResource("4_eja7d")
 
 [node name="Border" type="RigidBody2D" parent="Trees2"]
 position = Vector2(831, 1)
+collision_layer = 4
+collision_mask = 4
 max_contacts_reported = 10
 contact_monitor = true
 can_sleep = false
