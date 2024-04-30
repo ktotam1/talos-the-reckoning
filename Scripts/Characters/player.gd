@@ -86,7 +86,7 @@ func animate(input_vector):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if elapsed_death > 1:
-		get_tree().change_scene_to_file("res://Scenes/Levels/campsite.tscn")# Replace with function body.
+		Globals.game_manager_singleton.set_current_level("res://Scenes/Levels/campsite.tscn")# Replace with function body.
 		return
 	if health <= 0:
 		dying = true

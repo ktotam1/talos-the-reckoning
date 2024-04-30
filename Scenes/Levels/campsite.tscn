@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cbkq0fkaahgyf"]
+[gd_scene load_steps=58 format=3 uid="uid://cbkq0fkaahgyf"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/campsite.gd" id="1_s05hs"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="1_sp1hl"]
@@ -3554,6 +3554,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2t2d"]
+size = Vector2(12.375, 354.75)
+
 [node name="campsite" type="Node2D"]
 script = ExtResource("1_s05hs")
 
@@ -3804,9 +3807,18 @@ can_sleep = false
 position = Vector2(28, 50)
 shape = SubResource("RectangleShape2D_ibcyy")
 
+[node name="dialogue_start" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue_start"]
+position = Vector2(203.188, -74.625)
+shape = SubResource("RectangleShape2D_a2t2d")
+
 [connection signal="animation_finished" from="Chest/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Chest/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Chest/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Chest/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="NPCs/Path2D/PathFollow2D/Area2D/Timer" to="NPCs/Path2D/PathFollow2D/Area2D" method="_on_timer_timeout"]
+[connection signal="area_entered" from="dialogue_start" to="." method="_on_dialogue_start_area_entered"]

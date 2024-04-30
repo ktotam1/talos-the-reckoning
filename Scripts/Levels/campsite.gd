@@ -23,3 +23,7 @@ func _on_animated_sprite_2d_animation_finished(anim_name):
 		chest.play("closed") # Replace with function body.
 	if anim_name == "opening":
 		chest.play("opened")
+
+
+func _on_dialogue_start_area_entered(area):
+	print("entered") # Replace with function body.
