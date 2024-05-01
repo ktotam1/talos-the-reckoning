@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlrxmhfudnyjq"]
+[gd_scene load_steps=4 format=3 uid="uid://dssfge2y5ipw4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/dialogue_node.gd" id="1_07b87"]
 [ext_resource type="Resource" uid="uid://dc0lgiwrakou1" path="res://Resources/UI/Dialogues/intro.dialogue" id="2_j4x7f"]
@@ -7,6 +7,7 @@
 size = Vector2(12.375, 354.75)
 
 [node name="dialogue_start_point" type="Area2D"]
+process_mode = 3
 collision_layer = 0
 collision_mask = 9
 script = ExtResource("1_07b87")

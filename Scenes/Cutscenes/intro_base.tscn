@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="15_6w15q"]
 [ext_resource type="Texture2D" uid="uid://ey33inxknocm" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
 [ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="17_w3gwb"]
-[ext_resource type="PackedScene" uid="uid://dlrxmhfudnyjq" path="res://Scenes/UI/dialogue_start_point.tscn" id="18_34s1a"]
+[ext_resource type="PackedScene" uid="uid://dssfge2y5ipw4" path="res://Scenes/UI/dialogue_start_point.tscn" id="18_34s1a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72xi3"]
 texture = ExtResource("2_4fl7l")

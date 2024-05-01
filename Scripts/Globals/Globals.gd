@@ -17,7 +17,14 @@ var game_manager_singleton : GameManager
 # Dialogue
 var balloon_scene_path = "res://Scenes/UI/Dialogue.tscn"
 
-var is_in_dialogue = false
+var is_in_dialogue:bool = false:
+	get:
+		return is_in_dialogue
+	set(value):
+		if value != is_in_dialogue:
+			game_manager_singleton.change_fader_state(!value)
+			is_in_dialogue = value
+			
 var last_played_scene_name = ""
 var char_name = "HAHAHA"
 

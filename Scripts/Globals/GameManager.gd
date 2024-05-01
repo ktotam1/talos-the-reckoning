@@ -13,6 +13,8 @@ signal dialog_forward_input(event: InputEvent)
 
 @onready var current_level_parent = $"Gui/Current Level"
 
+
+@onready var fader = $Gui/fader
 @onready var fader_animation = $Gui/fader/AnimationPlayer
 var new_level_scene_res
 
@@ -76,3 +78,6 @@ func _on_fader_animation_finished(anim_name):
 		fader_animation.play("fade_to_normal")
 	else:
 		get_tree().paused = false
+		
+func change_fader_state(val):
+	fader.visible = val

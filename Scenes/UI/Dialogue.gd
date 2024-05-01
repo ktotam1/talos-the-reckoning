@@ -52,7 +52,8 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		var speaker_name = tr(dialogue_line.character, "dialogue")
 		character_label.text = "[center]"+ ("[i]" if speaker_name == "Narrator" else "") + speaker_name
-		character_portrait.texture = load("res://Scenes/UI/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
+		if character_portrait.visible:
+			character_portrait.texture = load("res://Scenes/UI/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
 
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
@@ -207,6 +208,10 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 		next(dialogue_line.responses[item.get_index()].next_id)
 	elif event.is_action_pressed("ui_accept") and item in get_responses():
 		next(dialogue_line.responses[item.get_index()].next_id)
+	elif event.is_action("ui_down") and item.get_index() < responses_menu.get_child_count()-1:
+		responses_menu.get_child(item.get_index()+1).grab_focus()
+	elif event.is_action("ui_up") and item.get_index() > 0:
+		responses_menu.get_child(item.get_index()-1).grab_focus()
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	if not is_waiting_for_input: return
