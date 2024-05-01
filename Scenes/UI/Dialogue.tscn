@@ -95,6 +95,7 @@ custom_minimum_size = Vector2(106, 0)
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="balloon/t0/t1/t2/main_dialog_panel/Margin/HBox/Portrait"]
+visible = false
 centered = false
 
 [node name="VBox" type="VBoxContainer" parent="balloon/t0/t1/t2/main_dialog_panel/Margin/HBox"]
