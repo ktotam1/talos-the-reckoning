@@ -1,8 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1kogi6wg1y0l"]
+[gd_scene load_steps=8 format=3 uid="uid://b1kogi6wg1y0l"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/GameManager.gd" id="1_0dsy1"]
 [ext_resource type="PackedScene" uid="uid://x2tduvu3nsg7" path="res://Scenes/UI/pause_menu.tscn" id="1_lxrky"]
 [ext_resource type="Script" path="res://Scripts/Globals/Current Level.gd" id="2_mebbf"]
+
+[sub_resource type="Animation" id="Animation_4j8b7"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7x4up"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yfjgc"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktxyc"]
+_data = {
+"RESET": SubResource("Animation_7x4up"),
+"fade_to_black": SubResource("Animation_yfjgc"),
+"fade_to_normal": SubResource("Animation_4j8b7")
+}
 
 [node name="Game Manager" type="Control" groups=["GAME_MANAGER_DO_NOT_ADD"]]
 process_mode = 3
@@ -13,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0dsy1")
-FIRST_LEVEL = "res://Scenes/Levels/campsite.tscn"
+FIRST_LEVEL = "res://Scenes/Cutscenes/intro_0.tscn"
 
 [node name="Gui" type="Control" parent="."]
 process_mode = 1
@@ -37,10 +89,27 @@ script = ExtResource("2_mebbf")
 wait_time = 300.0
 autostart = true
 
+[node name="fader" type="CanvasLayer" parent="Gui"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="Gui/fader"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Gui/fader"]
+libraries = {
+"": SubResource("AnimationLibrary_ktxyc")
+}
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("1_lxrky")]
 process_mode = 2
 
 [connection signal="timeout" from="Gui/Timer" to="." method="save_game"]
+[connection signal="animation_finished" from="Gui/fader/AnimationPlayer" to="." method="_on_fader_animation_finished"]
 [connection signal="save_button_pressed" from="CanvasLayer/Pause Menu" to="." method="_on_pause_menu_save_button_pressed"]

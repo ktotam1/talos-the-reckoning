@@ -1,9 +1,10 @@
 ~ scene_1
 
-Johnny: Stop! Who comes here? Identify yourself or I will shoot!
+Johnny: Stop! Who goes here? Identify yourself or I will shoot!
 Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grunted in pain, unable to answer this rather simple question.
 Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
-Narrator: ...
+- {{Globals.char_name}}: ...
+- {{Globals.char_name}}: Johnny, we don't have much time!
 {{Globals.char_name}}: I don’t...
 
 => END
@@ -56,9 +57,6 @@ Johnny: And you {{Globals.char_name}}, are our leader.
 {{Globals.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
 
 Johnny: Haha, nice one {{Globals.char_name}}. Now, follow me and show me that you’ve still got it.
-
-
-=> END
 
 ~ scene_3
 

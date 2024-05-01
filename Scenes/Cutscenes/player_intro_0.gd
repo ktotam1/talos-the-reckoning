@@ -7,6 +7,7 @@ extends Area2D
 @onready var animator = $AnimatedSprite2D
 @onready var timer = $Timer
 var move = true
+var die = false
 var recently_stopped = false
 
 @export var shift_at_half_time = true
@@ -17,17 +18,25 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
+func go_next():
+	if die:
+		Globals.game_manager_singleton.set_current_level("res://Scenes/Levels/campsite.tscn")
+
 func animate():
-	if move:
+	if die:
+		animator.play("die")
+		return
+	elif move:
 		animator.play("walking")
 	else:
 		animator.play("idle")
-	if shift_at_half_time and path.get_progress_ratio() > .5:
-		animator.flip_h = true
-	else: animator.flip_h = false
+	if shift_at_half_time:
+		if path.get_progress_ratio() > .5:
+			animator.flip_h = true
+		else: animator.flip_h = false
 
 func _physics_process(delta):
 	if shift_at_half_time and recently_stopped and (abs(path.get_progress_ratio() - 0.5) > 0.01 and abs(path.get_progress_ratio()) > 0.01):
@@ -36,11 +45,14 @@ func _physics_process(delta):
 		move = false
 		recently_stopped = true
 		timer.start(stop_time)
+	if path.get_progress_ratio() >= 0.99 and not die:
+		die = true
 	animate()
 	
-	if move:
+	if move and not die:
 		path.set_progress(path.get_progress() + speed * delta)
 
 
 func _on_timer_timeout():
 	move = true # Replace with function body.
+

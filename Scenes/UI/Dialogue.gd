@@ -117,6 +117,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
 	Globals.is_in_dialogue = true
+	Globals.last_played_scene_name = title
 	get_tree().paused = true
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 

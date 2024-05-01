@@ -18,6 +18,7 @@ var game_manager_singleton : GameManager
 var balloon_scene_path = "res://Scenes/UI/Dialogue.tscn"
 
 var is_in_dialogue = false
+var last_played_scene_name = ""
 var char_name = "HAHAHA"
 
 
