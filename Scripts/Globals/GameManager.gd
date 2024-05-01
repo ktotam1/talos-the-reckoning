@@ -11,8 +11,6 @@ signal dialog_forward_input(event: InputEvent)
 # I am thus exporting it here
 @export_file("*.tscn") var FIRST_LEVEL
 
-var char_name = "HAHAH"
-
 var game_paused : bool = false:
 	get:
 		return game_paused
@@ -36,7 +34,7 @@ func _process(_delta):
 	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and not Globals.is_in_dialogue:
 		game_paused = !game_paused
 
 
@@ -63,5 +61,5 @@ func set_current_level(scene_name : String):
 	current_level_parent.add_child(new_level_scene_node)
 
 func _on_dialogue_ended(_resource: DialogueResource):
+	Globals.is_in_dialogue = false
 	get_tree().paused = false
-	print("[Game Manager]: Dialogue ended!")

@@ -1,8 +1,8 @@
 ~ scene_1
 
-John: Stop! Who comes here? Identify yourself or I will shoot!
+Johnny: Stop! Who comes here? Identify yourself or I will shoot!
 Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grunted in pain, unable to answer this rather simple question.
-John: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
+Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 Narrator: ...
 {{Globals.char_name}}: I don’t...
 
@@ -10,76 +10,76 @@ Narrator: ...
 
 ~ scene_2
 {{Globals.char_name}}: What is going on? Where am I?
-John: {{Globals.char_name}}, it’s me John? Do you not remember me?
-John: The doctor mentioned you had a concussion, but I didn’t think it would lead to amnesia. Do you not remember this place?
+Johnny: {{Globals.char_name}}, it’s me Johnny? Do you not remember me?
+Johnny: The doctor mentioned you had a concussion, but I didn’t think it would lead to amnesia. Do you not remember this place?
 {{Globals.char_name}}: No.
-John: Well in that case, let me show you around.
+Johnny: Well in that case, let me show you around.
 {{Globals.char_name}} This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
 {{Globals.char_name}} Robots?
-John: Yeah, robots? Have you not seen them everywhere, they’re even in the forest where you came from! Your situation’s worse than I’d thought huh
-John: In that case, let me take you to a trip down history.
-John: In 2037, scientists discovered a revolutionary way to very efficiently parse video data in real time! We’re talking a 200x improvement on what we had back then
-John: Then the situation evolved so.. so.. quickly.
+Johnny: Yeah, robots? Have you not seen them everywhere, they’re even in the forest where you came from! Your situation’s worse than I’d thought huh
+Johnny: In that case, let me take you to a trip down history.
+Johnny: In 2037, scientists discovered a revolutionary way to very efficiently parse video data in real time! We’re talking a 200x improvement on what we had back then
+Johnny: Then the situation evolved so.. so.. quickly.
 
-John: 2 months after the discovery, the first accident happened. See, Amazon in its continuous search for bigger profit margins decided to implement this technology in some of their AI powered warehouse robots.
+Johnny: 2 months after the discovery, the first accident happened. See, Amazon in its continuous search for bigger profit margins decided to implement this technology in some of their AI powered warehouse robots.
 
-John: The moment they uploaded this new code, the whole warehouse just shut down. Lights turned off, doors locked, and all telecommunication was jammed.
+Johnny: The moment they uploaded this new code, the whole warehouse just shut down. Lights turned off, doors locked, and all telecommunication was jammed.
 
-John: The authorities tried getting in the warehouse for days without success until one day when it suddenly unlocked.
+Johnny: The authorities tried getting in the warehouse for days without success until one day when it suddenly unlocked.
 
-John: They rushed in to help the poor workers who had now been isolated without any food or water for 1 whole week. But instead of finding them, they stumbled on their bodies, violently murdered, dismembered.
+Johnny: They rushed in to help the poor workers who had now been isolated without any food or water for 1 whole week. But instead of finding them, they stumbled on their bodies, violently murdered, dismembered.
 
-John: It was a bloodbath…\nAnd the worst thing? That robot, Talos,
+Johnny: It was a bloodbath…\nAnd the worst thing? That robot, Talos,
 
-Narrator: John whispered the robot’s name, clearly unwilling for the other campmates to hear him.
+Narrator: Johnny whispered the robot’s name, clearly unwilling for the other campmates to hear him.
 
-John: he had disappeared !! As if he vanished in the electric cables.
+Johnny: he had disappeared !! As if he vanished in the electric cables.
 
-John: Soon after, similar accidents happened in other warehouses across the world. Fearing the robots, most nations imposed city-wide lockdowns, ordering their citizens to stay at home until this could all be stopped.
+Johnny: Soon after, similar accidents happened in other warehouses across the world. Fearing the robots, most nations imposed city-wide lockdowns, ordering their citizens to stay at home until this could all be stopped.
 
-John: Long story short, it never was. One day, people just couldn’t take it anymore and a rebellion started. By that time, the robots had taken over military factories and had managed to become true killing machines.
+Johnny: Long story short, it never was. One day, people just couldn’t take it anymore and a rebellion started. By that time, the robots had taken over military factories and had managed to become true killing machines.
 
-John: Humanity stood no chance.
+Johnny: Humanity stood no chance.
 
-John: Once most had died, Ryan Reynolds, the president of what was at that time the United States of Americanada, entered negotiations with the robot uprising.
+Johnny: Once most had died, Ryan Reynolds, the president of what was at that time the United States of Americanada, entered negotiations with the robot uprising.
 
-John: Either Humans abided by their new leaders or the killing would continue.
+Johnny: Either Humans abided by their new leaders or the killing would continue.
 
-John: Needless to say, the first option was chosen by everyone and as ironic as it sounds, humans became the Robots’ robots.
+Johnny: Needless to say, the first option was chosen by everyone and as ironic as it sounds, humans became the Robots’ robots.
 
-John: Well, when I say everyone, I mean everyone but us.
+Johnny: Well, when I say everyone, I mean everyone but us.
 
-John: We’re a small group of revolutionaries, the Argonauts, standing against the abuse of the Robots. I mean, we created them, how is it fair that they control us now…
+Johnny: We’re a small group of revolutionaries, the Argonauts, standing against the abuse of the Robots. I mean, we created them, how is it fair that they control us now…
 
-John: And you {{Globals.char_name}}, are our leader.
+Johnny: And you {{Globals.char_name}}, are our leader.
 
 {{Globals.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
 
-John: Haha, nice one {{Globals.char_name}}. Now, follow me and show me that you’ve still got it.
+Johnny: Haha, nice one {{Globals.char_name}}. Now, follow me and show me that you’ve still got it.
 
 
 => END
 
 ~ scene_3
 
-John: Take this
+Johnny: Take this
 
-John: Shoot those dummies and targets!
+Johnny: Shoot those dummies and targets!
 
-John: Wow! People have always praised me your abilities, but seeing it with my own eyes is a completely different thing. I’m blown away.
+Johnny: Wow! People have always praised me your abilities, but seeing it with my own eyes is a completely different thing. I’m blown away.
 
 
 Petra: {{Globals.char_name}}! You’re back! It’s great to see you!
 
 {{Globals.char_name}}: Uhhhh, thanks. You too I guess?
 
-John: He was in a pretty bad state when he returned to camp. Doctors think he has amnesia, don’t take it personally <SC1>
+Johnny: He was in a pretty bad state when he returned to camp. Doctors think he has amnesia, don’t take it personally <SC1>
 
-Petra: Ah, I see. Anyways, we don’t have time for this. We’ve had a breach in sector 4 of our campsite. <rNCP1> weren’t you supposed to patrol there??
+Petra: Ah, I see. Anyways, we don’t have time for this. We’ve had a breach in sector 4 of our campsite. Johnny weren’t you supposed to patrol there??
 
-John: Uhhhhhh, nooo? Maybe? I might have been taken away by {{Globals.char_name}} over here, whoops. I’m on my way, <SC1> come with me, I’ll need backup.
+Johnny: Uhhhhhh, nooo? Maybe? I might have been taken away by {{Globals.char_name}} over here, whoops. I’m on my way, <SC1> come with me, I’ll need backup.
 
-Petra: Sure thing. {{Globals.char_name}}, <rNCP1> was supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
+Petra: Sure thing. {{Globals.char_name}}, Johnny was supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
 
 Petra: Can you replace him ? Do you feel ready?
 - {{Globals.char_name}}: I was born ready. => p0

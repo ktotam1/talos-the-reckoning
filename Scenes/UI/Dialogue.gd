@@ -4,11 +4,25 @@ extends CanvasLayer
 @export var file_suffix: String = ""
 
 @onready var balloon: Control = $balloon
-@onready var margin: MarginContainer = $balloon/main_dialog_panel/Margin
-@onready var character_portrait: Sprite2D = $balloon/main_dialog_panel/Margin/HBox/Portrait/Sprite2D
+@onready var margin: MarginContainer = $balloon/t0/t1/t2/main_dialog_panel/Margin
+@onready var character_portrait: Sprite2D = $balloon/t0/t1/t2/main_dialog_panel/Margin/HBox/Portrait/Sprite2D
 @onready var character_label: RichTextLabel = $balloon/character_container/CharacterLabel
-@onready var dialogue_label: DialogueLabel = $balloon/main_dialog_panel/Margin/HBox/VBox/DialogueLabel
-@onready var responses_menu: VBoxContainer = $balloon/main_dialog_panel/Margin/HBox/VBox/Responses
+@onready var dialogue_label: DialogueLabel = $balloon/t0/t1/t2/main_dialog_panel/Margin/HBox/VBox/DialogueLabel
+@onready var responses_menu: VBoxContainer = $balloon/t0/t1/t2/main_dialog_panel/Margin/HBox/VBox/Responses
+
+
+@onready var character_container = $balloon/character_container 
+@onready var main_dialog_panel: PanelContainer = $balloon/t0/t1/t2/main_dialog_panel
+var update = false
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if update:
+		var current_char_pos = character_container.position
+		var current_dialog_pos = main_dialog_panel.position
+		# new_y = 0.3998(dialog_y) - 5.2991
+		character_container.set_position(Vector2(current_char_pos.x,0.3998*(current_dialog_pos.y) - 5.2991))
+		update = false
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -36,11 +50,13 @@ var dialogue_line: DialogueLine:
 		dialogue_line = next_dialogue_line
 
 		character_label.visible = not dialogue_line.character.is_empty()
-		character_label.text = tr(dialogue_line.character, "dialogue")
+		var speaker_name = tr(dialogue_line.character, "dialogue")
+		character_label.text = "[center]"+ ("[i]" if speaker_name == "Narrator" else "") + speaker_name
 		character_portrait.texture = load("res://Scenes/UI/portraits_balloon/portraits/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
 
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
+		dialogue_line.text.replace("Talos","[size=14][i]Talos[/i][/size]")
 		dialogue_label.dialogue_line = dialogue_line
 
 		# Show any responses we have
@@ -56,12 +72,14 @@ var dialogue_line: DialogueLine:
 				item.text = response.text
 				item.show()
 				responses_menu.add_child(item)
-
+		
+		update = true
 		# Show our balloon if it was previously hidden
 		balloon.show()
-
+		
 		dialogue_label.modulate.a = 1
 		dialogue_label.type_out()
+
 		await dialogue_label.finished_typing
 
 		# Wait for input
@@ -98,6 +116,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
+	Globals.is_in_dialogue = true
 	get_tree().paused = true
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
