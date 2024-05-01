@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlrxmhfudnyjq"]
+
+[ext_resource type="Script" path="res://Scripts/UI/dialogue_node.gd" id="1_07b87"]
+[ext_resource type="Resource" uid="uid://dc0lgiwrakou1" path="res://Resources/UI/Dialogues/intro.dialogue" id="2_j4x7f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pvh3n"]
+size = Vector2(12.375, 354.75)
+
+[node name="dialogue_start_point" type="Area2D"]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("1_07b87")
+intro_dialogue = ExtResource("2_j4x7f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(203.188, -74.625)
+shape = SubResource("RectangleShape2D_pvh3n")
