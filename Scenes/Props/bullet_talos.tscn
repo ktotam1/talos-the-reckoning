@@ -35,7 +35,8 @@ shape = SubResource("RectangleShape2D_02dgc")
 wait_time = 0.5
 
 [node name="NoCollisionTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="NoCollisionTimer" to="." method="_on_no_collision_timer_timeout"]

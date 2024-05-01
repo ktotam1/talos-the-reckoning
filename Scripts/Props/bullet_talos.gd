@@ -1,7 +1,7 @@
 extends Area2D
 
 #Data
-var speed : int = 120
+var speed : int = 100
 var target_vector : Vector2
 var destroyed : bool = false
 

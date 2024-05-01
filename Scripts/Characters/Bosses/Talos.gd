@@ -9,9 +9,10 @@ var gravity = 160
 @onready var animator = $BodyAnimator
 @onready var physicsbox = $PhysicsBox
 @onready var hurtbox = $Area2D/HurtBox
+@onready var enemy_load = preload("res://Scenes/Characters/Enemies/Basic_Enemy.tscn")
 @onready var bullet_load : PackedScene = preload("res://Scenes/Props/bullet_talos.tscn")
 @onready var pistol_bullet_marker : Marker2D = $PistolBulletMarker
-
+@onready var idleTimer = $IdleTimer
 var MAX_HEALTH = 250
 var health = 250
 var MAX_SHIELD = 50
@@ -19,6 +20,10 @@ var shield = 0
 var state = IDLE
 
 var spawn_guy = 0
+var bullets_to_spawn_guy = 21
+
+var time_to_shoot_again = 1.5
+var wait_time = 0.0
 
 func _ready():
 	healthbar.max_value = MAX_HEALTH
@@ -28,19 +33,17 @@ func _ready():
 	pass
 
 func set_state():
-	if state == DYING:
-		return DYING
-	if state == DEAD:
-		return DEAD
-	if state == SHIELD_UP:
+	if state != IDLE:
+		return state
+	if abs(player.global_position.x - global_position.x) > 150 and shield < 5:
 		return SHIELD_UP
-	if state == CHEST_SHOT:
+	if spawn_guy > bullets_to_spawn_guy:
+		spawn_guy = 0
 		return CHEST_SHOT
-	if abs(player.global_position.x - global_position.x) > 120 and shield < 5:
-		return SHIELD_UP
-	if spawn_guy == 9:
-		return CHEST_SHOT
-	return ARM_SHOT
+	if wait_time > time_to_shoot_again:
+		wait_time = 0
+		return ARM_SHOT
+	return IDLE
 
 func _process(delta):
 	if state == DYING or state == DEAD:
@@ -48,6 +51,8 @@ func _process(delta):
 	if health <= 0:
 		state = DYING
 		animator.play("die")
+	wait_time += delta
+
 	state = set_state()
 	match state:
 		IDLE:
@@ -107,6 +112,8 @@ func _on_body_animator_animation_finished():
 		state = IDLE
 	if animator.get_animation() == "chest_cannon":
 		state = IDLE
+	if animator.get_animation() == "arm_cannon":
+		state = IDLE
 
 
 func shoot(fromChest):
@@ -125,10 +132,13 @@ func shoot(fromChest):
 			bullet.target_vector = mouse_position
 			bullet.rotation = mouse_position.angle()
 			get_tree().current_scene.add_child(bullet)
+			var enemy = enemy_load.instantiate()
+			enemy.global_position = global_position
+			get_tree().current_scene.find_child("Enemies").add_child(enemy)
 func _on_body_animator_frame_changed():
 	if animator.get_animation() == "arm_cannon" and 1 <= animator.get_frame() and animator.get_frame() <= 3:
 		shoot(false)
 		spawn_guy+=1
 	if animator.get_animation() == "chest_cannon" and animator.get_frame() == 3:
 		shoot(true)
-		spawn_guy = 0
+

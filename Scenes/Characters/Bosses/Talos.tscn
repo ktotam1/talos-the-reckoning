@@ -987,6 +987,8 @@ polygon = PackedVector2Array(-11, -17, -12, -9, -29, -9, -37, 16, -24, 25, -12, 
 [node name="PistolBulletMarker" type="Marker2D" parent="."]
 position = Vector2(-15, 18)
 
+[node name="IdleTimer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="BodyAnimator" to="." method="_on_body_animator_animation_finished"]
 [connection signal="frame_changed" from="BodyAnimator" to="." method="_on_body_animator_frame_changed"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

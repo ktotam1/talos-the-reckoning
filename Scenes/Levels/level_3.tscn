@@ -2231,3 +2231,5 @@ leaving_scene = false
 
 [node name="Talos" parent="." instance=ExtResource("6_fxg35")]
 position = Vector2(1718, 102)
+
+[node name="Enemies" type="CanvasGroup" parent="."]
