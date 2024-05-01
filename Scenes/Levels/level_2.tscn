@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://jxkkdicyr4c5"]
+[gd_scene load_steps=78 format=3 uid="uid://jxkkdicyr4c5"]
 
 [ext_resource type="Texture2D" uid="uid://bshfe0ye7o1mb" path="res://Assets/Locations/Cyberpunk City/District/Tiles/sheet-platforms.png" id="1_7dppt"]
 [ext_resource type="PackedScene" uid="uid://cy7q26vdtq8g" path="res://Scenes/Characters/player.tscn" id="2_liwro"]
@@ -625,10 +625,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqoui"]
 size = Vector2(20, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eaq55"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wspvl"]
 size = Vector2(17.5, 17)
 
-[sub_resource type="GDScript" id="GDScript_rgoo0"]
+[sub_resource type="GDScript" id="GDScript_rr7ki"]
 script/source = "extends CharacterBody2D
 
 enum {IDLE, ATTACKING, DYING}
@@ -653,6 +653,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if state == DYING:
+		self.hitbox.get_shape().set_size(Vector2(1,1))
+		self.hitbox.position.x = 1
 		animator.play(\"die\")
 		return
 	if health <= 0:
@@ -671,6 +673,8 @@ func _physics_process(delta):
 	match state:
 		IDLE:
 			animator.play(\"idle\")
+			self.hitbox.get_shape().set_size(Vector2(1,1))
+			self.hitbox.position.x = 1
 		ATTACKING:
 			animator.play(\"attack\")
 	move_and_slide()
@@ -697,7 +701,7 @@ func _on_animated_sprite_2d_frame_changed():
 					self.hitbox.position.x = 1
 				1:
 					self.hitbox.get_shape().set_size(Vector2(28,12))
-					self.hitbox.position.x = 4.0
+					self.hitbox.position.x = 4
 				2: 
 					self.hitbox.get_shape().set_size(Vector2(30,12))
 					self.hitbox.position.x = 5
@@ -732,8 +736,8 @@ func _on_animated_sprite_2d_frame_changed():
 					self.hitbox.get_shape().set_size(Vector2(20,12))
 					self.hitbox.position.x = 1
 		else: 
-			self.hitbox.get_shape().set_size(Vector2(1,12))
-				
+			self.hitbox.get_shape().set_size(Vector2(1,1))
+			self.hitbox.position.x = 1
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3ufu"]
@@ -913,241 +917,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4f4va"]
 size = Vector2(15, 18)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_str72"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enacn"]
 size = Vector2(15, 12)
 
-[sub_resource type="GDScript" id="GDScript_rr7ki"]
-script/source = "extends CharacterBody2D
-
-enum {IDLE, ATTACKING, DYING}
-
-@onready var player = get_node(\"../../Player\")
-@onready var animator = $AnimatedSprite2D
-@onready var healthbar = $ProgressBar
-@onready var hitbox = $Hitbox/CollisionShape2D
-
-var state = IDLE
-var MAX_HEALTH = 5
-var health = MAX_HEALTH
-var elapsed_death = 0.0
-var SPEED = 80
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	healthbar.max_value = MAX_HEALTH
-	healthbar.value = health
-	animator.play(\"idle\")#Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	if state == DYING:
-		animator.play(\"die\")
-		return
-	if health <= 0:
-		state = DYING
-		animator.play(\"idle\")
-		return
-		#self.queue_free()
-	var x = player.global_position.x
-	
-	if state != ATTACKING:
-		if abs(x - global_position.x) > 125:
-			state=IDLE 
-		else:
-			state=ATTACKING
-
-	match state:
-		IDLE:
-			animator.play(\"idle\")
-		ATTACKING:
-			animator.play(\"attack\")
-	move_and_slide()
-
-
-func _on_animated_sprite_2d_animation_finished():
-	if animator.get_animation() == \"die\":
-		self.queue_free()
-	elif state != DYING:
-		state = IDLE # Replace with function body.
-
-
-func _on_area_2d_area_entered(area):
-	health -= 1
-	healthbar.value = health # Replace with function body.
-
-
-func _on_animated_sprite_2d_frame_changed():
-	if animator != null:
-		if animator.get_animation() == \"attack\":
-			match animator.get_frame():
-				0:
-					self.hitbox.get_shape().set_size(Vector2(20,12))
-					self.hitbox.position.x = 1
-				1:
-					self.hitbox.get_shape().set_size(Vector2(28,12))
-					self.hitbox.position.x = 4.0
-				2: 
-					self.hitbox.get_shape().set_size(Vector2(30,12))
-					self.hitbox.position.x = 5
-				3: 
-					self.hitbox.get_shape().set_size(Vector2(30,12))
-					self.hitbox.position.x = 5
-				4: 
-					self.hitbox.get_shape().set_size(Vector2(23,12))
-					self.hitbox.position.x = 2
-				5: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				6: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				7:
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				8: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				9: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				10: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				11: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				12: 
-					self.hitbox.get_shape().set_size(Vector2(20,12))
-					self.hitbox.position.x = 1
-		else: 
-			self.hitbox.get_shape().set_size(Vector2(1,12))
-				
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ia2p"]
-size = Vector2(15, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pay8h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpd8k"]
 size = Vector2(15, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u2d"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmtye"]
 size = Vector2(15, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsfyb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynfhf"]
 size = Vector2(15, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s15sg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvu17"]
 size = Vector2(15, 12)
 
-[sub_resource type="GDScript" id="GDScript_frkj3"]
-script/source = "extends CharacterBody2D
-
-enum {IDLE, ATTACKING, DYING}
-
-@onready var player = get_node(\"../../Player\")
-@onready var animator = $AnimatedSprite2D
-@onready var healthbar = $ProgressBar
-@onready var hitbox = $Hitbox/CollisionShape2D
-
-var state = IDLE
-var MAX_HEALTH = 5
-var health = MAX_HEALTH
-var elapsed_death = 0.0
-var SPEED = 80
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	healthbar.max_value = MAX_HEALTH
-	healthbar.value = health
-	animator.play(\"idle\")#Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	if state == DYING:
-		animator.play(\"die\")
-		return
-	if health <= 0:
-		state = DYING
-		animator.play(\"idle\")
-		return
-		#self.queue_free()
-	var x = player.global_position.x
-	
-	if state != ATTACKING:
-		if abs(x - global_position.x) > 125:
-			state=IDLE 
-		else:
-			state=ATTACKING
-
-	match state:
-		IDLE:
-			animator.play(\"idle\")
-		ATTACKING:
-			animator.play(\"attack\")
-	move_and_slide()
-
-
-func _on_animated_sprite_2d_animation_finished():
-	if animator.get_animation() == \"die\":
-		self.queue_free()
-	elif state != DYING:
-		state = IDLE # Replace with function body.
-
-
-func _on_area_2d_area_entered(area):
-	health -= 1
-	healthbar.value = health # Replace with function body.
-
-
-func _on_animated_sprite_2d_frame_changed():
-	if animator != null:
-		if animator.get_animation() == \"attack\":
-			match animator.get_frame():
-				0:
-					self.hitbox.get_shape().set_size(Vector2(20,12))
-					self.hitbox.position.x = 1
-				1:
-					self.hitbox.get_shape().set_size(Vector2(28,12))
-					self.hitbox.position.x = 4.0
-				2: 
-					self.hitbox.get_shape().set_size(Vector2(30,12))
-					self.hitbox.position.x = 5
-				3: 
-					self.hitbox.get_shape().set_size(Vector2(30,12))
-					self.hitbox.position.x = 5
-				4: 
-					self.hitbox.get_shape().set_size(Vector2(23,12))
-					self.hitbox.position.x = 2
-				5: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				6: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				7:
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				8: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				9: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				10: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				11: 
-					self.hitbox.get_shape().set_size(Vector2(96,12))
-					self.hitbox.position.x = 38
-				12: 
-					self.hitbox.get_shape().set_size(Vector2(20,12))
-					self.hitbox.position.x = 1
-		else: 
-			self.hitbox.get_shape().set_size(Vector2(1,12))
-				
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2iis"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7m2h"]
 size = Vector2(15, 12)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4u3l"]
@@ -1809,14 +1594,13 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/Basic_Enemy/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_eaq55")
+shape = SubResource("RectangleShape2D_wspvl")
 
 [node name="ToasterBot" type="CharacterBody2D" parent="enemies"]
-position = Vector2(171, -114)
-rotation = -1.5776
+position = Vector2(778, -74)
 collision_layer = 2
 collision_mask = 4
-script = SubResource("GDScript_rgoo0")
+script = SubResource("GDScript_rr7ki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot"]
 position = Vector2(-2.5, -1)
@@ -1849,16 +1633,18 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="enemies/ToasterBot"]
 
 [node name="Hitbox" type="Area2D" parent="enemies/ToasterBot"]
+unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot/Hitbox"]
+unique_name_in_owner = true
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_str72")
+shape = SubResource("RectangleShape2D_enacn")
 
 [node name="ToasterBot2" type="CharacterBody2D" parent="enemies"]
-position = Vector2(315, -115)
-rotation = -1.5776
+position = Vector2(698, -116)
+rotation = -1.57079
 collision_layer = 2
 collision_mask = 4
 script = SubResource("GDScript_rr7ki")
@@ -1879,7 +1665,7 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot2/Hurtbox"]
 position = Vector2(-3, -1)
-shape = SubResource("RectangleShape2D_2ia2p")
+shape = SubResource("RectangleShape2D_4f4va")
 
 [node name="ProgressBar" type="ProgressBar" parent="enemies/ToasterBot2"]
 offset_left = -9.0
@@ -1899,11 +1685,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot2/Hitbox"]
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_pay8h")
+shape = SubResource("RectangleShape2D_rpd8k")
 
 [node name="ToasterBot3" type="CharacterBody2D" parent="enemies"]
-position = Vector2(474, -115)
-rotation = -1.5776
+position = Vector2(585, -117)
+rotation = -1.57079
 collision_layer = 2
 collision_mask = 4
 script = SubResource("GDScript_rr7ki")
@@ -1944,11 +1730,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot3/Hitbox"]
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_d0u2d")
+shape = SubResource("RectangleShape2D_nmtye")
 
 [node name="ToasterBot4" type="CharacterBody2D" parent="enemies"]
-position = Vector2(586, -115)
-rotation = -1.5776
+position = Vector2(474, -115)
+rotation = -1.57079
 collision_layer = 2
 collision_mask = 4
 script = SubResource("GDScript_rr7ki")
@@ -1989,11 +1775,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot4/Hitbox"]
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_xsfyb")
+shape = SubResource("RectangleShape2D_ynfhf")
 
 [node name="ToasterBot5" type="CharacterBody2D" parent="enemies"]
-position = Vector2(698, -116)
-rotation = -1.5776
+position = Vector2(313, -116)
+rotation = -1.56891
 collision_layer = 2
 collision_mask = 4
 script = SubResource("GDScript_rr7ki")
@@ -2034,14 +1820,14 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot5/Hitbox"]
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_s15sg")
+shape = SubResource("RectangleShape2D_vvu17")
 
 [node name="ToasterBot6" type="CharacterBody2D" parent="enemies"]
-position = Vector2(778, -72)
-rotation = -0.00370985
+position = Vector2(170, -116)
+rotation = -1.55614
 collision_layer = 2
 collision_mask = 4
-script = SubResource("GDScript_frkj3")
+script = SubResource("GDScript_rr7ki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot6"]
 position = Vector2(-2.5, -1)
@@ -2079,7 +1865,7 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/ToasterBot6/Hitbox"]
 position = Vector2(-2.5, 1)
-shape = SubResource("RectangleShape2D_m2iis")
+shape = SubResource("RectangleShape2D_r7m2h")
 
 [node name="SecondFloor" type="CanvasGroup" parent="."]
 z_index = -2

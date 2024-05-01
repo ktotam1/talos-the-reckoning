@@ -5,7 +5,7 @@ enum {IDLE, ATTACKING, DYING}
 @onready var player = get_node("../../Player")
 @onready var animator = $AnimatedSprite2D
 @onready var healthbar = $ProgressBar
-@onready var hitbox = $Hitbox/CollisionShape2D
+@onready var hitbox = %Hitbox/CollisionShape2D
 
 var state = IDLE
 var MAX_HEALTH = 5
@@ -22,11 +22,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if state == DYING:
+		self.hitbox.get_shape().set_size(Vector2(1,12))
+		self.hitbox.position.x = 1
 		animator.play("die")
 		return
 	if health <= 0:
 		state = DYING
 		animator.play("idle")
+		self.hitbox.get_shape().set_size(Vector2(1,12))
+		self.hitbox.position.x = 1
+		print("IM DYING HERE")
 		return
 		#self.queue_free()
 	var x = player.global_position.x
@@ -102,4 +107,5 @@ func _on_animated_sprite_2d_frame_changed():
 					self.hitbox.position.x = 1
 		else: 
 			self.hitbox.get_shape().set_size(Vector2(1,12))
+			self.hitbox.position.x = 1
 				

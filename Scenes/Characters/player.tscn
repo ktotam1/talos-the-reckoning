@@ -70,7 +70,7 @@ animations = [{
 size = Vector2(9, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fesp"]
-size = Vector2(12, 26)
+size = Vector2(8, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpy15"]
 bg_color = Color(0.0196078, 1, 0.0470588, 1)
@@ -88,7 +88,7 @@ sprite_frames = SubResource("SpriteFrames_7qdfr")
 animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 0.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_x8dgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cagvaoasnbsj7"]
+[gd_scene load_steps=68 format=3 uid="uid://cagvaoasnbsj7"]
 
 [ext_resource type="PackedScene" uid="uid://cy7q26vdtq8g" path="res://Scenes/Characters/player.tscn" id="1_ec7wj"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="2_c2ajb"]
@@ -3084,7 +3084,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqoui"]
 size = Vector2(20, 21)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dukkd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eno1t"]
 size = Vector2(17.5, 17)
 
 [sub_resource type="GDScript" id="GDScript_1t1ro"]
@@ -3202,7 +3202,7 @@ func _on_animated_sprite_2d_frame_changed():
 				
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqyen"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgyra"]
 size = Vector2(17.5, 17)
 
 [sub_resource type="GDScript" id="GDScript_we0h7"]
@@ -3320,7 +3320,7 @@ func _on_animated_sprite_2d_frame_changed():
 				
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hog8w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7cls"]
 size = Vector2(17.5, 17)
 
 [sub_resource type="GDScript" id="GDScript_6aunb"]
@@ -3438,7 +3438,10 @@ func _on_animated_sprite_2d_frame_changed():
 				
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w802v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1kgu"]
+size = Vector2(17.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixpcj"]
 size = Vector2(17.5, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x4jna"]
@@ -3502,7 +3505,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Basic_Enemy2/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_dukkd")
+shape = SubResource("RectangleShape2D_eno1t")
 
 [node name="Basic_Enemy3" type="CharacterBody2D" parent="Enemies"]
 position = Vector2(870, 14)
@@ -3544,7 +3547,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Basic_Enemy3/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_gqyen")
+shape = SubResource("RectangleShape2D_hgyra")
 
 [node name="Basic_Enemy4" type="CharacterBody2D" parent="Enemies"]
 position = Vector2(1012, 21)
@@ -3586,7 +3589,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Basic_Enemy4/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_hog8w")
+shape = SubResource("RectangleShape2D_m7cls")
 
 [node name="Basic_Enemy5" type="CharacterBody2D" parent="Enemies"]
 position = Vector2(1158, 5)
@@ -3629,7 +3632,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Basic_Enemy5/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_w802v")
+shape = SubResource("RectangleShape2D_i1kgu")
 
 [node name="Basic_Enemy6" type="CharacterBody2D" parent="Enemies"]
 position = Vector2(806, 17)
@@ -3671,7 +3674,7 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Basic_Enemy6/Hitbox"]
 texture_filter = 2
 position = Vector2(-0.75, 6)
-shape = SubResource("RectangleShape2D_dukkd")
+shape = SubResource("RectangleShape2D_ixpcj")
 
 [node name="Zamboni" parent="." instance=ExtResource("5_eujo2")]
 position = Vector2(1738, 24)
