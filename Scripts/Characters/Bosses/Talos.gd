@@ -13,17 +13,19 @@ var gravity = 160
 @onready var bullet_load : PackedScene = preload("res://Scenes/Props/bullet_talos.tscn")
 @onready var pistol_bullet_marker : Marker2D = $PistolBulletMarker
 @onready var idleTimer = $IdleTimer
-var MAX_HEALTH = 250
-var health = 250
-var MAX_SHIELD = 50
+@export var MAX_HEALTH = 200
+var health = MAX_HEALTH
+@export var MAX_SHIELD = 40
 var shield = 0
 var state = IDLE
 
 var spawn_guy = 0
-var bullets_to_spawn_guy = 21
+@export var bullets_to_spawn_guy = 21
 
-var time_to_shoot_again = 1.5
+@export var time_to_shoot_again = 1.7
 var wait_time = 0.0
+
+@export var shield_up_radius = 145
 
 func _ready():
 	healthbar.max_value = MAX_HEALTH
@@ -35,7 +37,7 @@ func _ready():
 func set_state():
 	if state != IDLE:
 		return state
-	if abs(player.global_position.x - global_position.x) > 150 and shield < 5:
+	if abs(player.global_position.x - global_position.x) > shield_up_radius and shield == 0:
 		return SHIELD_UP
 	if spawn_guy > bullets_to_spawn_guy:
 		spawn_guy = 0
