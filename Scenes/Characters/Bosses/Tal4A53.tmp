@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://bcoktndbevqqs"]
+[gd_scene load_steps=129 format=3 uid="uid://bcoktndbevqqs"]
 
 [ext_resource type="Texture2D" uid="uid://c4co66ggrsngo" path="res://Assets/Bosses/Final_boss/Chest Sprites.png" id="1_eduh1"]
 [ext_resource type="Script" path="res://Scripts/Characters/Bosses/Talos.gd" id="1_pouik"]
@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cxlydswsny3sb" path="res://Assets/Bosses/Final_boss/Left Leg Sprites.png" id="5_07dft"]
 [ext_resource type="Texture2D" uid="uid://bdmk2xhktfy16" path="res://Assets/Bosses/Final_boss/Military Incursion Bot Sprite Sheet.png" id="6_8gq1f"]
 [ext_resource type="Texture2D" uid="uid://dhgt18qk4vvxe" path="res://Assets/Bosses/Final_boss/Death Beam Spawn Sprite Sheet.png" id="7_jj5nh"]
-[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="9_qh6dt"]
-[ext_resource type="StyleBox" uid="uid://bxvhi48dcf6eo" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="10_lu5sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50h52"]
 atlas = ExtResource("5_07dft")
@@ -410,6 +408,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_thdxe"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(0, 384, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncgid"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(160, 384, 160, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0506q"]
 atlas = ExtResource("6_8gq1f")
 region = Rect2(320, 384, 160, 96)
@@ -502,26 +508,6 @@ region = Rect2(1280, 576, 160, 96)
 atlas = ExtResource("6_8gq1f")
 region = Rect2(1440, 576, 160, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhdxu"]
-atlas = ExtResource("6_8gq1f")
-region = Rect2(0, 480, 160, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mtyf4"]
-atlas = ExtResource("6_8gq1f")
-region = Rect2(160, 480, 160, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v7avy"]
-atlas = ExtResource("6_8gq1f")
-region = Rect2(320, 480, 160, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk5lr"]
-atlas = ExtResource("6_8gq1f")
-region = Rect2(480, 480, 160, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xdkhh"]
-atlas = ExtResource("6_8gq1f")
-region = Rect2(640, 480, 160, 96)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6jefh"]
 atlas = ExtResource("6_8gq1f")
 region = Rect2(0, 0, 160, 96)
@@ -606,9 +592,35 @@ region = Rect2(1280, 288, 160, 96)
 atlas = ExtResource("6_8gq1f")
 region = Rect2(1440, 288, 160, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhdxu"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(0, 480, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtyf4"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(160, 480, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7avy"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(320, 480, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk5lr"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(480, 480, 160, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdkhh"]
+atlas = ExtResource("6_8gq1f")
+region = Rect2(640, 480, 160, 96)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_we3ss"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thdxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncgid")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0506q")
 }, {
@@ -624,7 +636,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nb0n6")
 }],
-"loop": false,
+"loop": true,
 "name": &"arm_cannon",
 "speed": 5.0
 }, {
@@ -653,7 +665,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b67p0")
 }],
-"loop": false,
+"loop": true,
 "name": &"chest_cannon",
 "speed": 5.0
 }, {
@@ -688,28 +700,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tegm6")
 }],
-"loop": false,
+"loop": true,
 "name": &"die",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhdxu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mtyf4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v7avy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uk5lr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xdkhh")
-}],
-"loop": false,
-"name": &"electric",
 "speed": 5.0
 }, {
 "frames": [{
@@ -791,8 +783,28 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8s5s")
 }],
-"loop": false,
+"loop": true,
 "name": &"shield_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhdxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtyf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7avy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk5lr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdkhh")
+}],
+"loop": true,
+"name": &"take_damage",
 "speed": 5.0
 }]
 
@@ -895,13 +907,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87gv"]
-bg_color = Color(0, 0.65098, 0.894118, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
-
 [node name="Talos" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -947,7 +952,8 @@ animation = &"activate"
 
 [node name="BodyAnimator" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_we3ss")
-animation = &"chest_cannon"
+animation = &"laser_firing"
+frame_progress = 0.38737
 
 [node name="LaserAnimator" type="AnimatedSprite2D" parent="."]
 position = Vector2(16, 9)
@@ -963,8 +969,6 @@ offset_left = -36.0
 offset_top = -22.0
 offset_right = 33.0
 offset_bottom = -18.0
-theme_override_styles/background = ExtResource("9_qh6dt")
-theme_override_styles/fill = ExtResource("10_lu5sr")
 step = 1.0
 show_percentage = false
 
@@ -973,20 +977,5 @@ offset_left = -36.0
 offset_top = -22.0
 offset_right = 33.0
 offset_bottom = -18.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_n87gv")
 step = 1.0
 show_percentage = false
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 64
-
-[node name="HurtBox" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(-11, -17, -12, -9, -29, -9, -37, 16, -24, 25, -12, 24, -22, 46, 20, 48, 16, 37, 19, 30, 17, 24, 35, 24, 23, 5, 29, -3, 22, -9, 4, -8, 4, -16)
-
-[node name="PistolBulletMarker" type="Marker2D" parent="."]
-position = Vector2(-15, 18)
-
-[connection signal="animation_finished" from="BodyAnimator" to="." method="_on_body_animator_animation_finished"]
-[connection signal="frame_changed" from="BodyAnimator" to="." method="_on_body_animator_frame_changed"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
