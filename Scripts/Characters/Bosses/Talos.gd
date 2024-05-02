@@ -91,7 +91,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func damage():
+func damage(area):
+	if area.is_in_group("attack2"):
+		shield = 0
 	if shield > 0:
 		shield -= 1
 	else:
@@ -100,7 +102,7 @@ func damage():
 	shieldbar.value = shield	
 
 func _on_area_2d_area_entered(area):
-	damage() # Replace with function body.
+	damage(area) # Replace with function body.
 
 
 func _on_body_animator_animation_finished():
@@ -133,10 +135,10 @@ func shoot(fromChest):
 			bullet.global_position = global_position
 			bullet.target_vector = mouse_position
 			bullet.rotation = mouse_position.angle()
-			get_tree().current_scene.add_child(bullet)
+			Globals.game_manager_singleton.get_current_level_scene().add_child(bullet)
 			var enemy = enemy_load.instantiate()
 			enemy.global_position = global_position
-			get_tree().current_scene.find_child("Enemies").add_child(enemy)
+			Globals.game_manager_singleton.get_current_level_scene().find_child("Enemies").add_child(enemy)
 func _on_body_animator_frame_changed():
 	if animator.get_animation() == "arm_cannon" and 1 <= animator.get_frame() and animator.get_frame() <= 3:
 		shoot(false)

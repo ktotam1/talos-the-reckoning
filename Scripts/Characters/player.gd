@@ -4,14 +4,28 @@ extends CharacterBody2D
 @export var jump_height = -125
 @onready var bullet_load : PackedScene = preload("res://Scenes/Props/bullet.tscn")
 @onready var pistol_bullet_marker : Marker2D = $Hand/Pivot/Pistol/PistolBulletMarker
-@onready var animator : AnimatedSprite2D = $AnimatedSprite2D
+@onready var animator1 : AnimatedSprite2D = $AnimatedSprite2D
+@onready var animator2 : AnimatedSprite2D = $CyberBody
 @onready var hand : Node2D = $Hand
 @onready var healthbar = $ProgressBar
+@onready var attack2 = $Hitbox/CollisionShape2D
+@onready var attackbar = $Attack2
 
+
+
+var upgraded = true
+var animator
 var MAX_HEALTH = 4
 var health = MAX_HEALTH
 var dying = false
 var elapsed_death = 0.0
+
+var attack2ing = false
+var attack2_elapsed = 0.0
+var attack2_total = .2
+var attack2_recharge_time = 15
+var recharging = false
+var recharge_elapsed = attack2_recharge_time
 
 @export var knockback_strength = 18
 var knockback = Vector2(0,0)
@@ -37,10 +51,28 @@ func input_movement():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	attackbar.visible = upgraded
+	if upgraded:
+		animator = animator2
+	else:
+		animator = animator1
 	healthbar.max_value = MAX_HEALTH
 	healthbar.value = health
 	pass # Replace with function body.
 
+func _process(delta):
+	attackbar.value = recharge_elapsed / attack2_recharge_time
+	if attack2ing:
+		attack2_elapsed += delta
+	if recharging:
+		recharge_elapsed += delta
+	if recharge_elapsed > attack2_recharge_time:
+		recharging = false
+		recharge_elapsed = attack2_recharge_time
+	if attack2_elapsed > attack2_total:
+		attack2ing = false
+		attack2_elapsed = 0
+		attack2.get_shape().set_size(Vector2(1,1))
 
 func shoot():
 	#bullets_amount -= 1
@@ -56,9 +88,17 @@ func shoot():
 	get_tree().current_scene.add_child(bullet)
 	#AudioManager.play_sound(AudioManager.SHOOT)
 	
+func ability():
+	attack2.get_shape().set_size(Vector2(250,100))
+	attack2ing = true
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot()
+	if upgraded and event.is_action_pressed("shoot2") and !recharging:
+		ability()
+		recharging = true
+		recharge_elapsed = 0
+	
 func animate(input_vector):
 	var mouse_position : Vector2 = (get_global_mouse_position() - global_position).normalized()
 	if mouse_position.x > 0 and animator.flip_h:

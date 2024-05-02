@@ -74,5 +74,9 @@ func _physics_process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	health -= 1
+	var dmg = 1
+	if area.is_in_group("attack2"):
+		dmg = int(MAX_HEALTH / 6)
+
+	health -= dmg
 	healthbar.value = health  # Replace with function body.

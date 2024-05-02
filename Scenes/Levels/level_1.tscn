@@ -2874,7 +2874,11 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_area_2d_area_entered(area):
-	health -= 1
+	var dmg = 1
+	if area.is_in_group(\"attack2\"):
+		dmg = int(MAX_HEALTH / 2)
+
+	health -= dmg
 	healthbar.value = health # Replace with function body.
 
 
@@ -3163,7 +3167,11 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_area_2d_area_entered(area):
-	health -= 1
+	var dmg = 1
+	if area.is_in_group(\"attack2\"):
+		dmg = int(MAX_HEALTH / 2)
+
+	health -= dmg
 	healthbar.value = health # Replace with function body.
 
 
@@ -3281,7 +3289,11 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_area_2d_area_entered(area):
-	health -= 1
+	var dmg = 1
+	if area.is_in_group(\"attack2\"):
+		dmg = int(MAX_HEALTH / 2)
+
+	health -= dmg
 	healthbar.value = health # Replace with function body.
 
 
@@ -3399,7 +3411,11 @@ func _on_animated_sprite_2d_animation_finished():
 
 
 func _on_area_2d_area_entered(area):
-	health -= 1
+	var dmg = 1
+	if area.is_in_group(\"attack2\"):
+		dmg = int(MAX_HEALTH / 2)
+
+	health -= dmg
 	healthbar.value = health # Replace with function body.
 
 
