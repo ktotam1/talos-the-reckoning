@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_1hh4u"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="1_a1tvw"]
 [ext_resource type="Texture2D" uid="uid://b1e2tlpkhwg4q" path="res://Assets/Props/gun.png" id="3_htdb8"]
-[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="4_vgsky"]
+[ext_resource type="StyleBox" uid="uid://vtddveedpjj8" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="4_vgsky"]
 [ext_resource type="Texture2D" uid="uid://pbmrxyfyb5tp" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_mask.png" id="5_qhxic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hee1v"]
