@@ -36,10 +36,13 @@ layout_mode = 2
 text = "
 ===PAUSE===
 _______________
+
+
 "
 horizontal_alignment = 1
 
 [node name="Save Button" type="Button" parent="Panel/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Save"
 

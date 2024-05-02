@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func _on_pressed():
-	$"Confirm Quit".visible = true
+	get_tree().quit()
 	
 func _on_confirmed_accept():
-	get_tree().quit()
+	pass

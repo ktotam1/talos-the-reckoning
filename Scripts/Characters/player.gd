@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var animator : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hand : Node2D = $Hand
 @onready var healthbar = $ProgressBar
+@onready var crosshair = load("res://Resources/UI/crosshair048.png")
 
 var MAX_HEALTH = 4
 var health = MAX_HEALTH
@@ -39,7 +40,7 @@ func input_movement():
 func _ready():
 	healthbar.max_value = MAX_HEALTH
 	healthbar.value = health
-	pass # Replace with function body.
+	Input.set_custom_mouse_cursor(crosshair)#,Input.CURSOR_ARROW, Vector2(16,16))
 
 
 func shoot():

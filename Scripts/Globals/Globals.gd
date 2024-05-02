@@ -26,7 +26,7 @@ var is_in_dialogue:bool = false:
 			is_in_dialogue = value
 			
 var last_played_scene_name = ""
-var char_name = "HAHAHA"
+var char_name = "Romain"
 
 
 

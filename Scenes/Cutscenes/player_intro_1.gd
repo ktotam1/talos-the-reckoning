@@ -32,8 +32,28 @@ func _physics_process(delta):
 		if setup_stage == 0:
 			DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 			DialogueManager.show_dialogue_balloon_scene(load(Globals.balloon_scene_path), load("res://Resources/UI/Dialogues/intro.dialogue"), "scene_2")
-		move = true
+		elif setup_stage %2 == 1:
+			move = true
+			
 
 func _on_dialogue_ended(_res):
 	$"AnimatedSprite2D".rotation = 0
 	setup_stage += 1
+
+
+func _on_area_entered(area):
+	if "petra" in area.name:
+		move = false
+		recently_stopped = true
+		setup_stage+=1
+		DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+		DialogueManager.show_dialogue_balloon_scene(load(Globals.balloon_scene_path), load("res://Resources/UI/Dialogues/intro.dialogue"), "scene_3")
+
+		area.speed = 8
+		area.move = true
+		var path :Path2D = area.get_parent().get_parent()
+		path.curve.set_point_position(1,Vector2(1,65))
+		path.curve.set_point_position(2,Vector2(0,65))
+	elif "portal" in area.name:
+		Globals.game_manager_singleton.set_current_level("res://Scenes/Levels/level_1.tscn")
+			
