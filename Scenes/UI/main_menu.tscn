@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5fbkxo0cmalu"]
+[gd_scene load_steps=7 format=3 uid="uid://c5fbkxo0cmalu"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_37n56"]
-[ext_resource type="Texture2D" uid="uid://qwuba3cso7ww" path="res://Textures/UI/ms_logo.png" id="2_pnta3"]
+[ext_resource type="Texture2D" uid="uid://buv5igivw8jom" path="res://Resources/UI/logo.png" id="2_bj4gq"]
+[ext_resource type="FontFile" uid="uid://deen77txhpvq8" path="res://Resources/UI/Fonts/Plaster-Regular.ttf" id="3_8o1re"]
+[ext_resource type="Theme" uid="uid://i00s0kym5eon" path="res://Scenes/UI/DialoguePanel.tres" id="4_gkyi2"]
+
+[sub_resource type="Gradient" id="Gradient_smcyx"]
+colors = PackedColorArray(0.454902, 0.588235, 0.929412, 1, 0.956863, 0.721569, 0.913725, 0.803922)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_veltc"]
+gradient = SubResource("Gradient_smcyx")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,40 +20,116 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_37n56")
 
-[node name="Menu Options" type="VBoxContainer" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -74.0
-offset_right = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_veltc")
+
+[node name="rectangles" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="rectangles"]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -38.0
+offset_right = 31.0
+offset_bottom = 76.0
+color = Color(0.905882, 1, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="rectangles"]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 150.0
+offset_right = 252.0
+offset_bottom = 264.0
+color = Color(1, 1, 0.886275, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="rectangles"]
+offset_left = 400.0
+offset_top = 44.0
+offset_right = 444.0
+offset_bottom = 124.0
+rotation = 1.57079
+color = Color(0.721569, 1, 0.929412, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -57.5
+offset_right = 28.5
+offset_bottom = -0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bj4gq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 66.0
+offset_top = 98.0
+offset_right = 1000.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0.47451, 0, 0.439216, 1)
+theme_override_fonts/font = ExtResource("3_8o1re")
+theme_override_font_sizes/font_size = 100
+text = "The Reckoning"
+
+[node name="Menu Options" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -54.0
+offset_right = 188.0
+offset_bottom = 20.0
+grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+theme = ExtResource("4_gkyi2")
+alignment = 1
+
+[node name="Play" type="Button" parent="Menu Options"]
+layout_mode = 2
+text = "Play"
 
 [node name="Load" type="Button" parent="Menu Options"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Load"
 
 [node name="Settings" type="Button" parent="Menu Options"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Settings"
 
 [node name="Quit" type="Button" parent="Menu Options"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 16.0
-offset_right = 83.0
-offset_bottom = 77.0
-texture = ExtResource("2_pnta3")
-
 [node name="Sub Options" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.641
@@ -61,5 +145,7 @@ offset_bottom = 56.0
 custom_minimum_size = Vector2(192, 114)
 layout_mode = 2
 
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed"]
+[connection signal="pressed" from="Menu Options/Play" to="." method="_create_new_game"]
 [connection signal="pressed" from="Menu Options/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Menu Options/Quit" to="." method="_on_quit_pressed"]

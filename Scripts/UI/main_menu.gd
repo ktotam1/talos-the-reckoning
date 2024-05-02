@@ -2,10 +2,12 @@ extends Control
 
 var all_saves = SaveMetadata.new();
 
+@onready var rects = $rectangles
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Hide all submenus
-	$"Sub Options".visible=false; # as a parent container, this will make all children invisible as well
+	$"Sub Options".visible=false;
 	
 	# Load saves
 	__load_saves();
@@ -77,3 +79,13 @@ func _on_load_pressed():
 	$"Sub Options".visible = true;
 	$"Sub Options/All Saves".visible = true;
 	
+func _process(_delta):
+	var tween = rects.create_tween()
+	var offset = - get_global_mouse_position() * 0.1
+	tween.tween_property(rects,"position",offset,1.0)
+	for rect in rects.get_children():
+		var rect_tween = rects.create_tween()
+		var current_color = rect.color
+		rect_tween.tween_property(rect,"modulate",Color(current_color,(rect.position-get_global_mouse_position()).length()*0.005),1.0)
+
+
