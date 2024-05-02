@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dwmjc3eo0dhd0"]
+[gd_scene load_steps=77 format=3 uid="uid://dwmjc3eo0dhd0"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/campsite.gd" id="1_b53rm"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="2_4fl7l"]
@@ -14,11 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://cd5p6igr1ca5d" path="res://Assets/Locations/Camp/exclusion-zone-tileset-pixel-art/3 Objects/Trees/11.png" id="12_agra5"]
 [ext_resource type="Texture2D" uid="uid://bnfd00ar8x5re" path="res://Assets/Locations/Camp/build_pack/Build Pack/Build Pack.png" id="13_73mxx"]
 [ext_resource type="Texture2D" uid="uid://bgenef2ke2unj" path="res://Assets/Locations/Camp/Misc/ChestSpriteSheet.png" id="13_xn5qv"]
-[ext_resource type="Script" path="res://Scenes/Cutscenes/player_intro_0.gd" id="14_fvd40"]
+[ext_resource type="Script" path="res://Scripts/Levels/Campsite/CampGuard.gd" id="14_p530b"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="15_6w15q"]
-[ext_resource type="Texture2D" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
-[ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="17_w3gwb"]
+[ext_resource type="Script" path="res://Scenes/Cutscenes/player_intro_1.gd" id="15_vge0q"]
+[ext_resource type="Texture2D" uid="uid://h5iriy4x5411" path="res://Assets/Friendlies/CampGuard/GraveRobber_idle.png" id="15_wpvl6"]
+[ext_resource type="Texture2D" uid="uid://ey33inxknocm" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
+[ext_resource type="Texture2D" uid="uid://dd2t5gut7jrdc" path="res://Assets/Friendlies/CampGuard/GraveRobber_walk.png" id="16_w4iwc"]
 [ext_resource type="PackedScene" uid="uid://bn72an4bc6ala" path="res://Scenes/UI/dialogue_start_point.tscn" id="18_34s1a"]
+[ext_resource type="Script" path="res://Scenes/Cutscenes/johnny_1.gd" id="20_sgtfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72xi3"]
 texture = ExtResource("2_4fl7l")
@@ -3463,10 +3466,102 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tjmj"]
 size = Vector2(34, 23)
 
+[sub_resource type="Curve2D" id="Curve2D_2ciu0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 665, 93, 0, 0, 0, 0, 390, 93, 0, 0, 0, 0, 665, 93)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svlcp"]
+size = Vector2(17.2226, 32.8844)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2qtl"]
+atlas = ExtResource("15_wpvl6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glq0u"]
+atlas = ExtResource("15_wpvl6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7n6e"]
+atlas = ExtResource("15_wpvl6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p77f"]
+atlas = ExtResource("15_wpvl6")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1kkr"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7psdb"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6w5h"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1np85"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0wq5"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5681a"]
+atlas = ExtResource("16_w4iwc")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac7nd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2qtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glq0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7n6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p77f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1kkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7psdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6w5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1np85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0wq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5681a")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve2D" id="Curve2D_rpd1o"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 462, 98, 0, 0, 0, 0, 638, 98)
+"points": PackedVector2Array(0, 0, 0, 0, 462, 98, 0, 0, 0, 0, 535, 98)
 }
 point_count = 2
 
@@ -3533,9 +3628,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_kyn8b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 474, 103, 0, 0, 0, 0, 586, 103)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_irpmv"]
+size = Vector2(9, 20)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayi5v"]
 atlas = ExtResource("16_t6q0n")
 region = Rect2(0, 32, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_831bk"]
+atlas = ExtResource("16_t6q0n")
+region = Rect2(0, 32, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnnn1"]
+atlas = ExtResource("16_t6q0n")
+region = Rect2(0, 96, 19, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah86q"]
+atlas = ExtResource("16_t6q0n")
+region = Rect2(0, 128, 19, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ehrx7"]
 animations = [{
@@ -3544,7 +3660,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_ayi5v")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_831bk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnnn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah86q")
+}],
+"loop": true,
+"name": &"walking",
 "speed": 5.0
 }]
 
@@ -3654,14 +3784,6 @@ z_index = -2
 position = Vector2(184, 60)
 texture = ExtResource("12_agra5")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background"]
-position = Vector2(491, 107)
-scale = Vector2(1.38514, 1)
-texture = ExtResource("13_73mxx")
-flip_h = true
-region_enabled = true
-region_rect = Rect2(166, 182, 20, 10)
-
 [node name="Chest" type="CanvasGroup" parent="."]
 z_index = -3
 
@@ -3680,43 +3802,87 @@ shape = SubResource("RectangleShape2D_0tjmj")
 
 [node name="NPCs" type="CanvasGroup" parent="."]
 
-[node name="player_NPC_0" type="Path2D" parent="NPCs"]
+[node name="BIGMOMA" type="Path2D" parent="NPCs"]
+curve = SubResource("Curve2D_2ciu0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="NPCs/BIGMOMA"]
+position = Vector2(570.733, 93)
+rotation = 0.0072726
+progress = 94.27
+rotates = false
+
+[node name="Area2D" type="Area2D" parent="NPCs/BIGMOMA/PathFollow2D"]
+script = ExtResource("14_p530b")
+speed = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/BIGMOMA/PathFollow2D/Area2D"]
+position = Vector2(-0.516876, 2.49657)
+shape = SubResource("RectangleShape2D_svlcp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/BIGMOMA/PathFollow2D/Area2D"]
+position = Vector2(7.03363, -4.95258)
+sprite_frames = SubResource("SpriteFrames_ac7nd")
+animation = &"walking"
+autoplay = "idle"
+flip_h = true
+
+[node name="Timer" type="Timer" parent="NPCs/BIGMOMA/PathFollow2D/Area2D"]
+
+[node name="BED" type="Sprite2D" parent="NPCs"]
+position = Vector2(498.074, 104)
+scale = Vector2(1.89257, 1.6)
+texture = ExtResource("13_73mxx")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(166, 182, 20, 10)
+
+[node name="player_NPC_1" type="Path2D" parent="NPCs"]
 position = Vector2(37, 0)
 curve = SubResource("Curve2D_rpd1o")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="NPCs/player_NPC_0"]
+[node name="PathFollow2D" type="PathFollow2D" parent="NPCs/player_NPC_1"]
 position = Vector2(462, 98)
 rotates = false
 loop = false
 
-[node name="Area2D" type="Area2D" parent="NPCs/player_NPC_0/PathFollow2D"]
-script = ExtResource("14_fvd40")
+[node name="Area2D" type="Area2D" parent="NPCs/player_NPC_1/PathFollow2D"]
+script = ExtResource("15_vge0q")
 shift_at_half_time = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/player_NPC_0/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_yoscn")
 debug_color = Color(0.278431, 0.631373, 0.113725, 0.419608)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/player_NPC_0/PathFollow2D/Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
+rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_c8sil")
 animation = &"die"
 
-[node name="Camera2D" type="Camera2D" parent="NPCs/player_NPC_0/PathFollow2D/Area2D"]
+[node name="Camera2D" type="Camera2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
 position = Vector2(0, -9)
 
-[node name="Timer" type="Timer" parent="NPCs/player_NPC_0/PathFollow2D/Area2D"]
-autostart = true
+[node name="johnny_1" type="Path2D" parent="NPCs"]
+curve = SubResource("Curve2D_kyn8b")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs"]
-position = Vector2(473, 103)
+[node name="PathFollow2D" type="PathFollow2D" parent="NPCs/johnny_1"]
+position = Vector2(474, 103)
+
+[node name="Area2D" type="Area2D" parent="NPCs/johnny_1/PathFollow2D"]
+script = ExtResource("20_sgtfk")
+shift_at_half_time = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/johnny_1/PathFollow2D/Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_irpmv")
+debug_color = Color(0.662745, 0.509804, 0.152941, 0.419608)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/johnny_1/PathFollow2D/Area2D"]
 scale = Vector2(0.697369, 0.672103)
 sprite_frames = SubResource("SpriteFrames_ehrx7")
+animation = &"walking"
+frame_progress = 0.562364
 flip_h = true
-
-[node name="Portal" parent="." instance=ExtResource("17_w3gwb")]
-position = Vector2(738, 87)
-next_scene = "level_1"
 
 [node name="Trees2" type="CanvasGroup" parent="."]
 
@@ -3816,5 +3982,5 @@ start = "scene_2"
 [connection signal="area_exited" from="Chest/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Chest/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="animation_finished" from="NPCs/player_NPC_0/PathFollow2D/Area2D/AnimatedSprite2D" to="NPCs/player_NPC_0/PathFollow2D/Area2D" method="go_next"]
-[connection signal="timeout" from="NPCs/player_NPC_0/PathFollow2D/Area2D/Timer" to="NPCs/player_NPC_0/PathFollow2D/Area2D" method="_on_timer_timeout"]
+[connection signal="timeout" from="NPCs/BIGMOMA/PathFollow2D/Area2D/Timer" to="NPCs/BIGMOMA/PathFollow2D/Area2D" method="_on_timer_timeout"]
+[connection signal="animation_finished" from="NPCs/player_NPC_1/PathFollow2D/Area2D/AnimatedSprite2D" to="NPCs/player_NPC_1/PathFollow2D/Area2D" method="go_next"]

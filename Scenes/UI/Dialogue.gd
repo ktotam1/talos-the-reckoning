@@ -57,7 +57,9 @@ var dialogue_line: DialogueLine:
 
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
-		dialogue_line.text.replace("Talos","[size=14][i]Talos[/i][/size]")
+		dialogue_line.text = dialogue_line.text.replace("Talos","[i]Talos[/i]")
+		if speaker_name == "Narrator":
+			dialogue_line.text = "[i]" + dialogue_line.text + "[/i]"
 		dialogue_label.dialogue_line = dialogue_line
 
 		# Show any responses we have

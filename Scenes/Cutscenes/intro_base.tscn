@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bgenef2ke2unj" path="res://Assets/Locations/Camp/Misc/ChestSpriteSheet.png" id="13_xn5qv"]
 [ext_resource type="Script" path="res://Scenes/Cutscenes/player_intro_0.gd" id="14_fvd40"]
 [ext_resource type="Texture2D" uid="uid://b53siuvowp6tr" path="res://Assets/Casual Enemies/Human Shills/worker-sheet_default.png" id="15_6w15q"]
-[ext_resource type="Texture2D" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
+[ext_resource type="Texture2D" uid="uid://ey33inxknocm" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
 [ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="17_w3gwb"]
 [ext_resource type="PackedScene" uid="uid://bn72an4bc6ala" path="res://Scenes/UI/dialogue_start_point.tscn" id="18_34s1a"]
 

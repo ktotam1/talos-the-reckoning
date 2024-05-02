@@ -23,7 +23,7 @@ func _process(_delta):
 
 func go_next():
 	if die:
-		Globals.game_manager_singleton.set_current_level("res://Scenes/Levels/campsite.tscn")
+		Globals.game_manager_singleton.set_current_level("res://Scenes/Cutscenes/intro_1.tscn")
 
 func animate():
 	if die:

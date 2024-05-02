@@ -65,7 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0dsy1")
-FIRST_LEVEL = "res://Scenes/Cutscenes/intro_0.tscn"
+FIRST_LEVEL = "res://Scenes/Cutscenes/intro_1.tscn"
 
 [node name="Gui" type="Control" parent="."]
 process_mode = 1

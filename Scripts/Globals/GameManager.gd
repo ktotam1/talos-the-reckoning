@@ -81,3 +81,12 @@ func _on_fader_animation_finished(anim_name):
 		
 func change_fader_state(val):
 	fader.visible = val
+
+func get_current_level_scene():
+	var num_children = current_level_parent.get_child_count(false)
+	if num_children > 1:
+		push_error("Current Level Node has more than 1 child!")
+	elif num_children != 0:
+		return current_level_parent.get_child(0)
+	else:
+		push_error("No current children!")

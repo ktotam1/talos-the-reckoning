@@ -5,7 +5,7 @@ Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grun
 Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 - {{Globals.char_name}}: ...
 - {{Globals.char_name}}: Johnny, we don't have much time!
-{{Globals.char_name}}: I don’t...
+{{Globals.char_name}}: I don’t fee...
 
 => END
 
@@ -13,12 +13,24 @@ Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 {{Globals.char_name}}: What is going on? Where am I?
 Johnny: {{Globals.char_name}}, it’s me Johnny? Do you not remember me?
 Johnny: The doctor mentioned you had a concussion, but I didn’t think it would lead to amnesia. Do you not remember this place?
-{{Globals.char_name}}: No.
+- {{Globals.char_name}}: No. => j0
+- {{Globals.char_name}}: Kiddo, we had a nice little chat, but now where are your parents? => j1
+~ j0 
 Johnny: Well in that case, let me show you around.
-{{Globals.char_name}} This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
-{{Globals.char_name}} Robots?
-Johnny: Yeah, robots? Have you not seen them everywhere, they’re even in the forest where you came from! Your situation’s worse than I’d thought huh
-Johnny: In that case, let me take you to a trip down history.
+=> cont
+~ j1
+Johnny: Hey! That's not fair, I nearly saved your life..
+~ cont
+Johnny: This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
+- {{Globals.char_name}}: Slurring at such a young age, what has the world become => j2
+- {{Globals.char_name}}: Robots?  => j3
+~ j2
+Johnny: Glad you bring it up - it's become a mess
+=> cont2
+~ j3
+Johnny: Robots. Have you not seen them everywhere? they’re even in the forest where you came from! Your situation’s worse than I’d thought huh
+Johnny: Let me take you to a trip down memory lane.
+~ cont2
 Johnny: In 2037, scientists discovered a revolutionary way to very efficiently parse video data in real time! We’re talking a 200x improvement on what we had back then
 Johnny: Then the situation evolved so.. so.. quickly.
 
@@ -30,17 +42,21 @@ Johnny: The authorities tried getting in the warehouse for days without success 
 
 Johnny: They rushed in to help the poor workers who had now been isolated without any food or water for 1 whole week. But instead of finding them, they stumbled on their bodies, violently murdered, dismembered.
 
-Johnny: It was a bloodbath…\nAnd the worst thing? That robot, Talos,
+Johnny: It was a bloodbath…\nAnd the worst thing? That robot
+
+Johnny: Talos
 
 Narrator: Johnny whispered the robot’s name, clearly unwilling for the other campmates to hear him.
 
 Johnny: he had disappeared !! As if he vanished in the electric cables.
 
-Johnny: Soon after, similar accidents happened in other warehouses across the world. Fearing the robots, most nations imposed city-wide lockdowns, ordering their citizens to stay at home until this could all be stopped.
+Johnny: Soon after, similar accidents happened in other warehouses across the world. 
+Johnny: Fearing the robots, most nations imposed city-wide lockdowns, ordering their citizens to stay at home until this could all be stopped.
 
-Johnny: Long story short, it never was. One day, people just couldn’t take it anymore and a rebellion started. By that time, the robots had taken over military factories and had managed to become true killing machines.
+Johnny: Long story short, it never was. One day, people just couldn’t take it anymore and a rebellion started. 
+Johnny: By that time, the robots had taken over military factories and had managed to become true killing machines.
 
-Johnny: Humanity stood no chance.
+Johnny: [speed=0.7] Humanity stood no chance [/speed].
 
 Johnny: Once most had died, Ryan Reynolds, the president of what was at that time the United States of Americanada, entered negotiations with the robot uprising.
 
@@ -54,9 +70,11 @@ Johnny: We’re a small group of revolutionaries, the Argonauts, standing agains
 
 Johnny: And you {{Globals.char_name}}, are our leader.
 
-{{Globals.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
+- {{Globals.char_name}}: Wait what? Your leader? But it’s the first time I see your bunch.
 
-Johnny: Haha, nice one {{Globals.char_name}}. Now, follow me and show me that you’ve still got it.
+Johnny: Haha, nice one {{Globals.char_name}}. Now, follow me, I hear Petra needs our help.
+
+=> END
 
 ~ scene_3
 
