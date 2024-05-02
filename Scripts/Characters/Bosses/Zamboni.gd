@@ -13,7 +13,7 @@ var dying = false
 var elapsed_death = 0.0
 var charging = false
 var charge_timer = 0.0
-var charge_time = 4
+var charge_time = 3.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	healthbar.max_value = MAX_HEALTH
@@ -41,7 +41,7 @@ func _physics_process(delta):
 	if charge_timer > charge_time:
 		charging = false
 		charge_timer = 0.0
-	elif abs(x - global_position.x) > 130:
+	elif abs(x - global_position.x) > 120:
 		charging = true
 	if charging:
 		charge_timer += delta
@@ -52,7 +52,7 @@ func _physics_process(delta):
 		col3.scale.x = -1
 		if !charging:
 			rotation = 0
-			velocity.x = -50
+			velocity.x = -70
 		else:
 			rotation = 1
 			velocity.x = -120
@@ -63,7 +63,7 @@ func _physics_process(delta):
 		col3.scale.x = 1
 		if !charging:
 			rotation = 0
-			velocity.x = 50
+			velocity.x = 70
 		else:
 			rotation = -1
 			velocity.x = 120
