@@ -4,18 +4,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<title>The Reckoning</title>
-		<script>
-if (!window.SharedArrayBuffer && location.host == 'html.itch.zone') {
-	let id = location.pathname.split('/')[2];
-	let url = '//itch.io/embed-upload/' + id + '?color=303333';
-	window.open(url);
-	window.addEventListener('load', () => {
-		document.getElementById('canvas').remove();
-		document.getElementById('status').innerHTML = '<button type="button" onclick="window.open(\'' + url + '\')">Play</button>';
-		document.getElementById('status').style.visibility = 'visible';
-	});
-}
-</script>
 		<style>
 body {
 	touch-action: none;
@@ -123,7 +111,18 @@ body {
 		</style>
 		<link id='-gd-engine-icon' rel='icon' type='image/png' href='v_0_test.icon.png' />
 <link rel='apple-touch-icon' href='v_0_test.apple-touch-icon.png'/>
-
+<script>
+if (!window.SharedArrayBuffer && location.host == 'html.itch.zone') {
+	let id = location.pathname.split('/')[2];
+	let url = '//itch.io/embed-upload/' + id + '?color=303333';
+	window.open(url);
+	window.addEventListener('load', () => {
+		document.getElementById('canvas').remove();
+		document.getElementById('status').innerHTML = '<button type="button" onclick="window.open(\'' + url + '\')">Play</button>';
+		document.getElementById('status').style.visibility = 'visible';
+	});
+}
+</script>
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -149,7 +148,7 @@ body {
 
 		<script src="v_0_test.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"v_0_test","experimentalVK":false,"fileSizes":{"v_0_test.pck":20408896,"v_0_test.wasm":48585775},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"v_0_test","experimentalVK":false,"fileSizes":{"v_0_test.pck":21103408,"v_0_test.wasm":27907743},"focusCanvas":true,"gdextensionLibs":[]};
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {

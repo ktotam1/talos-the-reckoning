@@ -10,8 +10,7 @@ extends CharacterBody2D
 @onready var healthbar = $ProgressBar
 @onready var attack2 = $Hitbox/CollisionShape2D
 @onready var attackbar = $Attack2
-
-
+@onready var crosshair = load("res://Resources/UI/crosshair048.png")
 
 var upgraded = true
 var animator
@@ -58,7 +57,7 @@ func _ready():
 		animator = animator1
 	healthbar.max_value = MAX_HEALTH
 	healthbar.value = health
-	pass # Replace with function body.
+	Input.set_custom_mouse_cursor(crosshair)#,Input.CURSOR_ARROW, Vector2(16,16))
 
 func _process(delta):
 	attackbar.value = recharge_elapsed / attack2_recharge_time

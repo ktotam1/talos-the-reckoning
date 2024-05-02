@@ -4,6 +4,7 @@ extends Area2D
 @onready var path = get_parent()
 @export var speed = 20
 @export var stop_time = 3
+@export var flip_flipped = false
 @onready var animator = $AnimatedSprite2D
 @onready var timer = $Timer
 var move = true
@@ -26,8 +27,8 @@ func animate():
 	else:
 		animator.play("idle")
 	if shift_at_half_time and path.get_progress_ratio() > .5:
-		animator.flip_h = false
-	else: animator.flip_h = true
+		animator.flip_h = not flip_flipped
+	else: animator.flip_h = flip_flipped
 
 func _physics_process(delta):
 	if shift_at_half_time and recently_stopped and (abs(path.get_progress_ratio() - 0.5) > 0.01 and abs(path.get_progress_ratio()) > 0.01):

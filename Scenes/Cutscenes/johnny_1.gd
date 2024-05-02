@@ -8,6 +8,7 @@ extends Area2D
 var move = true
 var recently_stopped = false
 
+
 @export var shift_at_half_time = true
 
 # Called when the node enters the scene tree for the first time.
@@ -26,15 +27,9 @@ func animate():
 		animator.play("idle")
 	if shift_at_half_time:
 		if path.get_progress_ratio() > .5:
-			animator.flip_h = true
-		else: animator.flip_h = false
+			animator.flip_h = false
 
 func _physics_process(delta):
-	if shift_at_half_time and recently_stopped and (abs(path.get_progress_ratio() - 0.5) > 0.01 and abs(path.get_progress_ratio()) > 0.01):
-		recently_stopped = false
-	if shift_at_half_time and !recently_stopped and ((path.get_progress_ratio() - 0.5 > 0 and path.get_progress_ratio() - 0.5 < 0.01) or abs(path.get_progress_ratio()) < 0.01):
-		move = false
-		recently_stopped = true
 	animate()
 	
 	if move:

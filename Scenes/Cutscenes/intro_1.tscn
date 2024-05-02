@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dwmjc3eo0dhd0"]
+[gd_scene load_steps=90 format=3 uid="uid://dwmjc3eo0dhd0"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/campsite.gd" id="1_b53rm"]
 [ext_resource type="Texture2D" uid="uid://cjt1s2wmjcxc8" path="res://Assets/Locations/Camp/Dirt/[64x64] Rocky Grass.png" id="2_4fl7l"]
@@ -20,8 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://h5iriy4x5411" path="res://Assets/Friendlies/CampGuard/GraveRobber_idle.png" id="15_wpvl6"]
 [ext_resource type="Texture2D" uid="uid://ey33inxknocm" path="res://Assets/Casual Enemies/Human Shills/green_worker-sheet_hat.png" id="16_t6q0n"]
 [ext_resource type="Texture2D" uid="uid://dd2t5gut7jrdc" path="res://Assets/Friendlies/CampGuard/GraveRobber_walk.png" id="16_w4iwc"]
+[ext_resource type="PackedScene" uid="uid://buhsw2i03gje3" path="res://Scenes/Props/portal.tscn" id="17_w3gwb"]
 [ext_resource type="PackedScene" uid="uid://bn72an4bc6ala" path="res://Scenes/UI/dialogue_start_point.tscn" id="18_34s1a"]
+[ext_resource type="Script" path="res://Scenes/Cutscenes/petra_intro_1.gd" id="20_ho0b3"]
 [ext_resource type="Script" path="res://Scenes/Cutscenes/johnny_1.gd" id="20_sgtfk"]
+[ext_resource type="Texture2D" uid="uid://diq1k4ngfhy8c" path="res://Assets/Friendlies/mvHumanWoman/mvHumanWoman/full/knight.png" id="21_1rapw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_72xi3"]
 texture = ExtResource("2_4fl7l")
@@ -3561,7 +3564,7 @@ animations = [{
 [sub_resource type="Curve2D" id="Curve2D_rpd1o"]
 resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 462, 98, 0, 0, 0, 0, 535, 98)
+"points": PackedVector2Array(0, 0, 0, 0, 462, 98, 0, 0, 0, 0, 732, 98)
 }
 point_count = 2
 
@@ -3629,10 +3632,11 @@ animations = [{
 }]
 
 [sub_resource type="Curve2D" id="Curve2D_kyn8b"]
+resource_local_to_scene = true
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 474, 103, 0, 0, 0, 0, 586, 103)
+"points": PackedVector2Array(0, 0, 0, 0, 474, 103, 0, 0, 0, 0, 612, 103, 0, 0, 0, 0, 474, 103)
 }
-point_count = 2
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irpmv"]
 size = Vector2(9, 20)
@@ -3678,7 +3682,78 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="campsite_intro" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_u0454"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 657, 65, 0, 0, 0, 0, 600, 65, 0, 0, 0, 0, 657, 65)
+}
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdjof"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7tm7"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_focuu"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3skoy"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkktb"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyv8k"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hd7a"]
+atlas = ExtResource("21_1rapw")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cxns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdjof")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7tm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_focuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3skoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkktb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lyv8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hd7a")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1ptt"]
+size = Vector2(44, 28.4454)
+
+[node name="campsite_intro_1" type="Node2D"]
 script = ExtResource("1_b53rm")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -3814,13 +3889,14 @@ rotates = false
 [node name="Area2D" type="Area2D" parent="NPCs/BIGMOMA/PathFollow2D"]
 script = ExtResource("14_p530b")
 speed = 25
+flip_flipped = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/BIGMOMA/PathFollow2D/Area2D"]
 position = Vector2(-0.516876, 2.49657)
 shape = SubResource("RectangleShape2D_svlcp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/BIGMOMA/PathFollow2D/Area2D"]
-position = Vector2(7.03363, -4.95258)
+position = Vector2(-4.96606, -4.86531)
 sprite_frames = SubResource("SpriteFrames_ac7nd")
 animation = &"walking"
 autoplay = "idle"
@@ -3845,21 +3921,22 @@ position = Vector2(462, 98)
 rotates = false
 loop = false
 
-[node name="Area2D" type="Area2D" parent="NPCs/player_NPC_1/PathFollow2D"]
+[node name="player" type="Area2D" parent="NPCs/player_NPC_1/PathFollow2D"]
+collision_layer = 134217728
+collision_mask = 134217729
 script = ExtResource("15_vge0q")
-shift_at_half_time = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/player_NPC_1/PathFollow2D/player"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_yoscn")
 debug_color = Color(0.278431, 0.631373, 0.113725, 0.419608)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/player_NPC_1/PathFollow2D/player"]
 rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_c8sil")
 animation = &"die"
 
-[node name="Camera2D" type="Camera2D" parent="NPCs/player_NPC_1/PathFollow2D/Area2D"]
+[node name="Camera2D" type="Camera2D" parent="NPCs/player_NPC_1/PathFollow2D/player"]
 position = Vector2(0, -9)
 
 [node name="johnny_1" type="Path2D" parent="NPCs"]
@@ -3867,10 +3944,10 @@ curve = SubResource("Curve2D_kyn8b")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="NPCs/johnny_1"]
 position = Vector2(474, 103)
+rotates = false
 
 [node name="Area2D" type="Area2D" parent="NPCs/johnny_1/PathFollow2D"]
 script = ExtResource("20_sgtfk")
-shift_at_half_time = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/johnny_1/PathFollow2D/Area2D"]
 position = Vector2(-0.5, 0)
@@ -3881,8 +3958,34 @@ debug_color = Color(0.662745, 0.509804, 0.152941, 0.419608)
 scale = Vector2(0.697369, 0.672103)
 sprite_frames = SubResource("SpriteFrames_ehrx7")
 animation = &"walking"
-frame_progress = 0.562364
 flip_h = true
+
+[node name="petra_1" type="Path2D" parent="NPCs"]
+position = Vector2(34, 30)
+curve = SubResource("Curve2D_u0454")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="NPCs/petra_1"]
+position = Vector2(657, 65)
+rotation = 3.14159
+rotates = false
+
+[node name="petra" type="Area2D" parent="NPCs/petra_1/PathFollow2D"]
+collision_layer = 134217729
+collision_mask = 134217729
+script = ExtResource("20_ho0b3")
+speed = 30
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NPCs/petra_1/PathFollow2D/petra"]
+position = Vector2(0, 2)
+scale = Vector2(0.593751, 0.593751)
+sprite_frames = SubResource("SpriteFrames_8cxns")
+animation = &"idle"
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/petra_1/PathFollow2D/petra"]
+position = Vector2(0, -2.77731)
+shape = SubResource("RectangleShape2D_n1ptt")
+debug_color = Color(0.937255, 0, 0.619608, 0.419608)
 
 [node name="Trees2" type="CanvasGroup" parent="."]
 
@@ -3977,10 +4080,18 @@ shape = SubResource("RectangleShape2D_ibcyy")
 position = Vector2(-50, 0)
 start = "scene_2"
 
+[node name="portal" parent="." instance=ExtResource("17_w3gwb")]
+position = Vector2(767, 84)
+scale = Vector2(-1.4003, 1.09262)
+collision_layer = 134217737
+collision_mask = 134217737
+next_scene = "level1"
+
 [connection signal="animation_finished" from="Chest/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Chest/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Chest/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Chest/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Chest/Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="NPCs/BIGMOMA/PathFollow2D/Area2D/Timer" to="NPCs/BIGMOMA/PathFollow2D/Area2D" method="_on_timer_timeout"]
-[connection signal="animation_finished" from="NPCs/player_NPC_1/PathFollow2D/Area2D/AnimatedSprite2D" to="NPCs/player_NPC_1/PathFollow2D/Area2D" method="go_next"]
+[connection signal="area_entered" from="NPCs/player_NPC_1/PathFollow2D/player" to="NPCs/player_NPC_1/PathFollow2D/player" method="_on_area_entered"]
+[connection signal="animation_finished" from="NPCs/player_NPC_1/PathFollow2D/player/AnimatedSprite2D" to="NPCs/player_NPC_1/PathFollow2D/player" method="go_next"]

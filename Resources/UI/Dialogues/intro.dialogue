@@ -5,7 +5,8 @@ Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grun
 Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 - {{Globals.char_name}}: ...
 - {{Globals.char_name}}: Johnny, we don't have much time!
-{{Globals.char_name}}: I don’t fee...
+{{Globals.char_name}}: I..
+{{Globals.char_name}}: I don’t feel...
 
 => END
 
@@ -78,33 +79,42 @@ Johnny: Haha, nice one {{Globals.char_name}}. Now, follow me, I hear Petra needs
 
 ~ scene_3
 
-Johnny: Take this
-
-Johnny: Shoot those dummies and targets!
-
-Johnny: Wow! People have always praised me your abilities, but seeing it with my own eyes is a completely different thing. I’m blown away.
-
-
 Petra: {{Globals.char_name}}! You’re back! It’s great to see you!
 
-{{Globals.char_name}}: Uhhhh, thanks. You too I guess?
+- {{Globals.char_name}}: Uhhhh, thanks. You too I guess?
 
-Johnny: He was in a pretty bad state when he returned to camp. Doctors think he has amnesia, don’t take it personally <SC1>
+Johnny: He was in a pretty bad state when he returned to camp. Doctors think he has amnesia, don’t take it personally Petra
 
-Petra: Ah, I see. Anyways, we don’t have time for this. We’ve had a breach in sector 4 of our campsite. Johnny weren’t you supposed to patrol there??
+Petra: Oh no! This compromises all our plan!
+Johnny: I know, but let's think about that later. I hear there was a [i] sliiightly [/i] more pressing matter to attend to?
+ 
+Petra: You're right, we don’t have time for this. We’ve had a breach in sectors 3,4. Johnny weren’t you supposed to patrol there?
 
-Johnny: Uhhhhhh, nooo? Maybe? I might have been taken away by {{Globals.char_name}} over here, whoops. I’m on my way, <SC1> come with me, I’ll need backup.
+Johnny: Uhm, nooo? Maybe? I might have been taken aback by {{Globals.char_name}}'s return, whoops.
 
-Petra: Sure thing. {{Globals.char_name}}, Johnny was supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
+Petra: What's done is done, come with me to the eastern side of camp, we're most needed there.
+Petra: {{Globals.char_name}} can you cover sector 4 west of here? It'll probably get you back up to speed. 
 
-Petra: Can you replace him ? Do you feel ready?
+Petra: Johnny was then supposed to go on an investigation to the original warehouse where Talos was born with the idea of finding a hint of his current whereabouts.
+
+Petra: Can you replace him on that as well ? Do you feel ready?
 - {{Globals.char_name}}: I was born ready. => p0
 - {{Globals.char_name}}: WHAT?! You want me to go the place Talos himself made his first victims? => p1
-
 ~ p0
-Petra: Yeah, {{Globals.char_name}}’s back babyyy!
-=> END
-
+Petra: I knew a small concussion wouldn't stop you, go get them!
+=> c3
 ~ p1
-Petra: Haha, I forgot how big of a joker you were {{Globals.char_name}}’s, nice one.than: You picked the second one.
+Petra: Haha, I forgot how big of a joker you were {{Globals.char_name}}’s, nice one.
+~ c3
+Petra: Take the portal at the end of the road, it should materialize you at the right place.
+- {{Globals.char_name}}: Did you just say portal?
+
+Petra: Yep, robot tech. Some of the stuff they do is pretty amazing.
+Petra: We even set ours up to equip you with the camp's best weapons when going on misisons.
+Petra: You used to carry your own, but seeing as you're empty-handed, this might come in handy.
+
+- {{Globals.char_name}}: Thanks Petra!
+- {{Globals.char_name}}: And I thought I'd practice my karate today...
+
+Petra: Good luck out there!
 => END
