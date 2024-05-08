@@ -14,7 +14,7 @@ extends CharacterBody2D
 
 var upgraded = true
 var animator
-var MAX_HEALTH = 4
+var MAX_HEALTH = 8
 var health = MAX_HEALTH
 var dying = false
 var elapsed_death = 0.0
