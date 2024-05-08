@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bdx38vqc2xijq" path="res://Assets/Casual Enemies/Zamboni/ezgif.com-gif-maker-removebg-preview.png" id="1_3wo7c"]
 [ext_resource type="Script" path="res://Scripts/Characters/Bosses/Zamboni.gd" id="1_4hk1u"]
-[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="3_w37le"]
-[ext_resource type="StyleBox" uid="uid://bxvhi48dcf6eo" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="4_8mtyl"]
+[ext_resource type="StyleBox" uid="uid://vtddveedpjj8" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="3_w37le"]
+[ext_resource type="StyleBox" uid="uid://c87motdvxaoxk" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="4_8mtyl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5i7q7"]
 atlas = ExtResource("1_3wo7c")
