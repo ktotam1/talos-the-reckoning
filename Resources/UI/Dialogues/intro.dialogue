@@ -1,6 +1,6 @@
 ~ scene_1
 
-Johnny: Stop! Who goes here? Identify yourself or I will shoot!
+Johnny: Stop! Who goes there? Identify yourself or I will shoot!
 Narrator: {{Globals.char_name}}’s organs screamed their displeasure as he grunted in pain, unable to answer this rather simple question.
 Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 - {{Globals.char_name}}: ...
@@ -11,7 +11,7 @@ Johnny: {{Globals.char_name}}... {{Globals.char_name}}, is that you?
 => END
 
 ~ scene_2
-{{Globals.char_name}}: What is going on? Where am I?
+{{Globals.char_name}}: What's going on? Where am I?
 Johnny: {{Globals.char_name}}, it’s me Johnny? Do you not remember me?
 Johnny: The doctor mentioned you had a concussion, but I didn’t think it would lead to amnesia. Do you not remember this place?
 - {{Globals.char_name}}: No. => j0
@@ -23,7 +23,7 @@ Johnny: Well in that case, let me show you around.
 Johnny: Hey! That's not fair, I nearly saved your life..
 ~ cont
 Johnny: This is our camp. It’s a safe space, one of the only places left on Earth not affected by the ongoing revolution. Fucking robots…
-- {{Globals.char_name}}: Slurring at such a young age, what has the world become => j2
+- {{Globals.char_name}}: Swearing at such a young age, what has the world become => j2
 - {{Globals.char_name}}: Robots?  => j3
 ~ j2
 Johnny: Glad you bring it up - it's become a mess
@@ -41,7 +41,7 @@ Johnny: The moment they uploaded this new code, the whole warehouse just shut do
 
 Johnny: The authorities tried getting in the warehouse for days without success until one day when it suddenly unlocked.
 
-Johnny: They rushed in to help the poor workers who had now been isolated without any food or water for 1 whole week. But instead of finding them, they stumbled on their bodies, violently murdered, dismembered.
+Johnny: They rushed in to help the poor workers who had now been isolated without any food or water for a whole week. But instead of finding them, they stumbled on their bodies, violently murdered, dismembered.
 
 Johnny: It was a bloodbath…\nAnd the worst thing? That robot
 
@@ -67,7 +67,7 @@ Johnny: Needless to say, the first option was chosen by everyone and as ironic a
 
 Johnny: Well, when I say everyone, I mean everyone but us.
 
-Johnny: We’re a small group of revolutionaries, the Argonauts, standing against the abuse of the Robots. I mean, we created them, how is it fair that they control us now…
+Johnny: We’re a small group of revolutionaries, the Argonauts, standing against the reign of the Robots. I mean, we created them, how is it fair that they control us now…
 
 Johnny: And you {{Globals.char_name}}, are our leader.
 
@@ -88,7 +88,7 @@ Johnny: He was in a pretty bad state when he returned to camp. Doctors think he 
 Petra: Oh no! This compromises all our plan!
 Johnny: I know, but let's think about that later. I hear there was a [i] sliiightly [/i] more pressing matter to attend to?
  
-Petra: You're right, we don’t have time for this. We’ve had a breach in sectors 3,4. Johnny weren’t you supposed to patrol there?
+Petra: You're right, we don’t have time for this. We’ve had a breach in sectors 3 and 4. Johnny weren’t you supposed to patrol there?
 
 Johnny: Uhm, nooo? Maybe? I might have been taken aback by {{Globals.char_name}}'s return, whoops.
 

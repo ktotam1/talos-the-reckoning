@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cxlydswsny3sb" path="res://Assets/Bosses/Final_boss/Left Leg Sprites.png" id="5_07dft"]
 [ext_resource type="Texture2D" uid="uid://bdmk2xhktfy16" path="res://Assets/Bosses/Final_boss/Military Incursion Bot Sprite Sheet.png" id="6_8gq1f"]
 [ext_resource type="Texture2D" uid="uid://dhgt18qk4vvxe" path="res://Assets/Bosses/Final_boss/Death Beam Spawn Sprite Sheet.png" id="7_jj5nh"]
-[ext_resource type="StyleBox" uid="uid://b4e1ewaqlsgvq" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="9_qh6dt"]
-[ext_resource type="StyleBox" uid="uid://bxvhi48dcf6eo" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="10_lu5sr"]
+[ext_resource type="StyleBox" uid="uid://vtddveedpjj8" path="res://Scenes/Characters/Enemies/healthbar_background.tres" id="9_qh6dt"]
+[ext_resource type="StyleBox" uid="uid://c87motdvxaoxk" path="res://Scenes/Characters/Enemies/healthbar_foreground.tres" id="10_lu5sr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50h52"]
 atlas = ExtResource("5_07dft")
